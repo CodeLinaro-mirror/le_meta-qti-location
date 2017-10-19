@@ -1,6 +1,6 @@
 inherit autotools-brokensep pkgconfig
 
-DESCRIPTION = "location api inerface"
+DESCRIPTION = "location api interface"
 PR = "r1"
 LICENSE = "BSD"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/\
