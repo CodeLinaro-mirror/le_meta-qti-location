@@ -11,6 +11,8 @@ SRC_URI = "file://hardware/qcom/gps/pla/oe/"
 SRC_DIR = "${WORKSPACE}/hardware/qcom/gps/pla/oe/"
 S = "${WORKDIR}/hardware/qcom/gps/pla/oe"
 
+DEPENDS = "system-core"
+
 do_configure() {
 }
 
