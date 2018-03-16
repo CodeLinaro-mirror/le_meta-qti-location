@@ -1,4 +1,5 @@
 inherit autotools-brokensep pkgconfig
+require ${COREBASE}/meta-qti-location/recipes/include/common-location-defines.inc
 
 DESCRIPTION = "GPS Loc Platform Library Abstraction"
 PR = "r1"

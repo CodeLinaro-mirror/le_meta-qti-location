@@ -1,4 +1,5 @@
 inherit autotools-brokensep qcommon pkgconfig
+require ${COREBASE}/meta-qti-location/recipes/include/common-location-defines.inc
 
 DESCRIPTION = "Loc DS"
 PR = "r1"
