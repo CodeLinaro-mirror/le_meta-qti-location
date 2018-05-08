@@ -10,7 +10,8 @@ FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://qcom-opensource/location/loc_net_iface/"
 S = "${WORKDIR}/qcom-opensource/location/loc_net_iface"
 DEPENDS = "glib-2.0 gps-utils qmi qmi-framework loc-pla data data-items loc-hal"
-EXTRA_OECONF = "--with-glib"
+EXTRA_OECONF = "--with-glib \
+                --enable-target=${BASEMACHINE}"
 
 PACKAGES = "${PN}"
 INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
