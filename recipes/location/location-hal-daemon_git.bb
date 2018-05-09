@@ -13,7 +13,7 @@ CPPFLAGS_append = " -DUSE_ANDROID_LOGGING "
 LDFLAGS_append = " -llog "
 S = "${WORKDIR}/qcom-opensource/location/location_hal_daemon"
 
-DEPENDS = "loc-pla-hdr loc-hal location-service gps-utils location-api-iface location-client-api location-api"
+DEPENDS = "loc-pla-hdr loc-hal location-service gps-utils location-api-iface location-api"
 
 EXTRA_OECONF = "--with-core-includes=${STAGING_INCDIR} \
                 --with-locationapi-includes=${STAGING_INCDIR}/location-api-iface \
