@@ -1,4 +1,5 @@
 inherit autotools qcommon qlicense qprebuilt
+require ${COREBASE}/meta-qti-location/recipes/include/common-location-defines.inc
 
 DESCRIPTION = "location client api test application "
 PR = "r1"
