@@ -22,7 +22,7 @@ DEPENDS += "${@base_conditional('BASEMACHINE', 'mdm9607', 'powermanager-lib', ''
 EXTRA_OECONF += "${@base_conditional('BASEMACHINE', 'mdm9607', '--enable-target=${BASEMACHINE}', '', d)}"
 
 INITSCRIPT_NAME = "location_hal_initializer"
-INITSCRIPT_PARAMS = "start 98 2 3 4 5 . stop 2 0 1 6 ."
+INITSCRIPT_PARAMS = "start 37 S ."
 
 SRC_URI +="file://location_hal_daemon.service"
 
