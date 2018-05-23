@@ -1,4 +1,5 @@
 inherit autotools-brokensep pkgconfig
+require ${COREBASE}/meta-qti-location/recipes/include/common-location-defines.inc
 
 DESCRIPTION = "Izat api hdr"
 PR = "r1"
@@ -8,6 +9,7 @@ ${LICENSE};md5=3775480a712fc46a69647678acb234cb"
 
 FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://qcom-opensource/location/izat_api/"
+SRC_DIR = "${WORKSPACE}/qcom-opensource/location/izat_api/"
 S = "${WORKDIR}/qcom-opensource/location/izat_api"
 
 do_configure() {
