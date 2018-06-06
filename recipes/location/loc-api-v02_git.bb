@@ -12,7 +12,7 @@ SRC_URI = "file://qcom-opensource/location/loc_api/loc_api_v02/"
 SRC_DIR = "${WORKSPACE}/qcom-opensource/location/loc_api/loc_api_v02/"
 S = "${WORKDIR}/qcom-opensource/location/loc_api/loc_api_v02"
 
-DEPENDS = "system-core loc-core loc-ds"
+DEPENDS = "system-core loc-core"
 EXTRA_OECONF = "--with-locpla-includes=${STAGING_INCDIR}/loc-pla \
                 --with-glib"
 
