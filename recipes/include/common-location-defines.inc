@@ -9,6 +9,10 @@ CFLAGS_append_apq8098 = " -DUSE_ANDROID_LOGGING"
 CPPFLAGS_append_apq8098 = " -DUSE_ANDROID_LOGGING"
 LDFLAGS_append_apq8098 = " -llog"
 
+CFLAGS_append_sda845 = " -DUSE_ANDROID_LOGGING"
+CPPFLAGS_append_sda845 = " -DUSE_ANDROID_LOGGING"
+LDFLAGS_append_sda845 = " -llog"
+
 CFLAGS_append_qcs605 = " -DUSE_ANDROID_LOGGING"
 CPPFLAGS_append_qcs605 = " -DUSE_ANDROID_LOGGING"
 LDFLAGS_append_qcs605 = " -llog"
