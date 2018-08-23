@@ -24,6 +24,14 @@ INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
 FILES_${PN} = "${libdir}/* ${sysconfdir}"
 INSANE_SKIP_${PN} = "dev-so"
 
+SRC_URI +="file://overlay/"
 do_install_append() {
-   install -m 0644 -D ${S}/etc/gps.conf ${D}${sysconfdir}/gps.conf
+   #Install overlay conf file for target,if exists
+   gpsConfOverlayFile='${WORKDIR}/overlay/${BASEMACHINE}/etc/gps.conf'
+   if [ -e ${gpsConfOverlayFile} ]; then
+       echo "Installing gps.conf overlay file: ${gpsConfOverlayFile}"
+       install -m 0644 -D "${gpsConfOverlayFile}" ${D}${sysconfdir}/gps.conf
+   else
+       install -m 0644 -D ${S}/etc/gps.conf ${D}${sysconfdir}/gps.conf
+   fi
 }
