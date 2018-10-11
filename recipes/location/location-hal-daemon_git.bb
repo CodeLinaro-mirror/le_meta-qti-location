@@ -18,8 +18,8 @@ EXTRA_OECONF = "--with-core-includes=${STAGING_INCDIR} \
                 --with-locationapi-includes=${STAGING_INCDIR}/location-api-iface \
                 --with-glib"
 
-DEPENDS += "${@base_conditional('BASEMACHINE', 'mdm9607', 'powermanager-lib', '', d)}"
-EXTRA_OECONF += "${@base_conditional('BASEMACHINE', 'mdm9607', '--enable-target=${BASEMACHINE}', '', d)}"
+DEPENDS += "${@oe.utils.conditional('BASEMACHINE', 'mdm9607', 'powermanager-lib', '', d)}"
+EXTRA_OECONF += "${@oe.utils.conditional('BASEMACHINE', 'mdm9607', '--enable-target=${BASEMACHINE}', '', d)}"
 
 INITSCRIPT_NAME = "location_hal_initializer"
 INITSCRIPT_PARAMS = "start 37 S ."
