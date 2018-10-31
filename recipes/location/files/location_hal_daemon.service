@@ -27,15 +27,15 @@
 
 [Unit]
 Description=location remote service launcher
-SourcePath=/etc/initscripts/start_location_hal_daemon
+SourcePath=/etc/initscripts/location_hal_initializer
 After=data.mount mount-data.service
 
 [Service]
 User=root
 Restart=always
 RemainAfterExit=yes
-ExecStart=/etc/initscripts/start_location_hal_daemon start
-ExecStop=/etc/initscripts/start_location_hal_daemon stop
+ExecStart=/etc/initscripts/location_hal_initializer start_service
+ExecStop=/etc/initscripts/location_hal_initializer stop_service
 
 [Install]
 WantedBy=multi-user.target
