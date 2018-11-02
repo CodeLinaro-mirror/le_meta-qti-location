@@ -27,7 +27,7 @@ INSANE_SKIP_${PN} = "dev-so"
 SRC_URI +="file://overlay/"
 do_install_append() {
    #Install overlay conf file for target,if exists
-   gpsConfOverlayFile='${WORKDIR}/overlay/${BASEMACHINE}/etc/gps.conf'
+   gpsConfOverlayFile='${WORKDIR}/overlay/${MACHINE}/etc/gps.conf'
    if [ -e ${gpsConfOverlayFile} ]; then
        echo "Installing gps.conf overlay file: ${gpsConfOverlayFile}"
        install -m 0644 -D "${gpsConfOverlayFile}" ${D}${sysconfdir}/gps.conf
