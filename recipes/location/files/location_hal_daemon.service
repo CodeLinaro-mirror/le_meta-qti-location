@@ -34,8 +34,9 @@ After=data.mount mount-data.service
 User=root
 Restart=always
 RemainAfterExit=yes
-ExecStart=/etc/initscripts/start_location_hal_daemon start
-ExecStop=/etc/initscripts/start_location_hal_daemon stop
+ExecStart=/usr/bin/location_hal_daemon
+ExecStop=
+ExecStartPre=-/etc/initscripts/location_hal_initializer start
 
 [Install]
 WantedBy=multi-user.target
