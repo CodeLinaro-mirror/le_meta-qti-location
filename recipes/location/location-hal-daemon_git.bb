@@ -25,6 +25,7 @@ INITSCRIPT_NAME = "location_hal_initializer"
 INITSCRIPT_PARAMS = "start 98 2 3 4 5 . stop 2 0 1 6 ."
 
 SRC_URI +="file://location_hal_daemon.service"
+SRC_URI +="file://location_hal_daemon-tmpfilesd.conf"
 
 PACKAGES = "${PN}"
 FILES_${PN} += "${libdir}/*"
@@ -35,7 +36,11 @@ INSANE_SKIP_${PN} = "dev-deps"
 do_install_append () {
 
     if ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'true', 'false', d)}; then
-        install -m 0755 ${S}/location_hal_initializer  -D ${D}${sysconfdir}/initscripts/location_hal_initializer
+        ## Install systemd-tmpfiles config file
+        install -d ${D}${sysconfdir}/tmpfiles.d/
+        install -m 0644 ${WORKDIR}/location_hal_daemon-tmpfilesd.conf ${D}${sysconfdir}/tmpfiles.d/${BPN}.conf
+
+        ## Install systemd service unit file
         install -d ${D}${sysconfdir}/systemd/system/
         install -m 0644 ${WORKDIR}/location_hal_daemon.service -D ${D}${sysconfdir}/systemd/system/location_hal_daemon.service
         install -d ${D}${sysconfdir}/systemd/system/multi-user.target.wants/
