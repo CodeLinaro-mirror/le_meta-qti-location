@@ -27,16 +27,20 @@
 
 [Unit]
 Description=location remote service launcher
-SourcePath=/etc/initscripts/location_hal_initializer
-After=data.mount mount-data.service
+SourcePath=/usr/bin/location_hal_daemon
+After=sysinit.target data.mount mount-data.service
 
 [Service]
-User=root
+User=gps
+Group=gps
 Restart=always
 RemainAfterExit=yes
 ExecStart=/usr/bin/location_hal_daemon
 ExecStop=
-ExecStartPre=-/etc/initscripts/location_hal_initializer start
+# Start as user gps, which already has locclient group
+SupplementaryGroups=diag
+CapabilityBoundingSet=CAP_SETGID CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_SETGID CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 
 [Install]
 WantedBy=multi-user.target
