@@ -28,7 +28,7 @@
 [Unit]
 Description=location remote service launcher
 SourcePath=/usr/bin/location_hal_daemon
-After=sysinit.target data.mount mount-data.service
+After=sysinit.target data.mount mount-data.service logd.service
 
 [Service]
 User=gps
