@@ -28,7 +28,7 @@
 [Unit]
 Description=location remote service launcher
 SourcePath=/etc/initscripts/location_hal_initializer
-After=data.mount mount-data.service
+After=data.mount mount-data.service logd.service
 
 [Service]
 User=root
