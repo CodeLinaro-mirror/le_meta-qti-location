@@ -12,7 +12,8 @@ FILESPATH =+ "${WORKSPACE}:"
 SRC_DIR = "${WORKSPACE}/qcom-opensource/location/location_hal_daemon/"
 S = "${WORKDIR}/qcom-opensource/location/location_hal_daemon"
 
-DEPENDS = "loc-pla-hdr loc-hal location-service gps-utils location-api-iface location-api"
+DEPENDS = "loc-pla-hdr loc-hal location-service gps-utils location-api-iface location-api \
+           loc-qsocket"
 
 EXTRA_OECONF = "--with-core-includes=${WORKSPACE}/system/core/include \
                 --with-locationapi-includes=${STAGING_INCDIR}/location-api-iface \
