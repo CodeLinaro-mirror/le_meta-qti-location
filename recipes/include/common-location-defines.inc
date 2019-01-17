@@ -17,6 +17,10 @@ CFLAGS_append_qcs605 = " -DUSE_ANDROID_LOGGING"
 CPPFLAGS_append_qcs605 = " -DUSE_ANDROID_LOGGING"
 LDFLAGS_append_qcs605 = " -llog"
 
+CFLAGS_append_sdm845 = " -DUSE_ANDROID_LOGGING"
+CPPFLAGS_append_sdm845 = " -DUSE_ANDROID_LOGGING"
+LDFLAGS_append_sdm845 = " -llog"
+
 CFLAGS_append_apq8017 = " -DUSE_ANDROID_LOGGING"
 CPPFLAGS_append_apq8017 = " -DUSE_ANDROID_LOGGING"
 LDFLAGS_append_apq8017 = " -llog"
