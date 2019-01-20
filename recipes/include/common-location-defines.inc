@@ -28,3 +28,11 @@ LDFLAGS_append_apq8009 = " -llog"
 CFLAGS_append_apq8053 = " -DUSE_ANDROID_LOGGING"
 CPPFLAGS_append_apq8053 = " -DUSE_ANDROID_LOGGING"
 LDFLAGS_append_apq8053 = " -llog"
+
+CFLAGS_append_qcs40x = " -DUSE_ANDROID_LOGGING"
+CPPFLAGS_append_qcs40x = " -DUSE_ANDROID_LOGGING"
+LDFLAGS_append_qcs40x = " -llog"
+
+CFLAGS_append_sdmsteppe = " -DUSE_ANDROID_LOGGING"
+CPPFLAGS_append_sdmsteppe = " -DUSE_ANDROID_LOGGING"
+LDFLAGS_append_sdmsteppe = " -llog"
