@@ -1,4 +1,4 @@
-inherit autotools qcommon qlicense qprebuilt update-rc.d systemd
+inherit autotools qcommon update-rc.d systemd
 require ${COREBASE}/meta-qti-location/recipes/include/common-location-defines.inc
 
 DESCRIPTION = "location hal daemon service"
