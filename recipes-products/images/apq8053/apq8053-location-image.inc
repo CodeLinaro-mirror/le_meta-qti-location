@@ -2,3 +2,5 @@
 IMAGE_INSTALL += "${@base_contains('DISTRO_FEATURES','location-services', 'loc-hal', '', d)}"
 IMAGE_INSTALL += "${@base_contains('DISTRO_FEATURES','location-services', 'loc-api-v02', '', d)}"
 IMAGE_INSTALL += "${@base_contains('DISTRO_FEATURES','location-services', 'loc-net-iface', '', d)}"
+IMAGE_INSTALL += "${@base_contains('DISTRO_FEATURES','location-services', 'location-geofence', '', d)}"
+IMAGE_INSTALL += "${@base_contains('DISTRO_FEATURES','location-services', 'location-batching', '', d)}"
