@@ -1,4 +1,5 @@
 inherit autotools qcommon qlicense qprebuilt update-rc.d systemd
+require ${COREBASE}/meta-qti-location/recipes/include/common-location-defines.inc
 
 DESCRIPTION = "location hal daemon service"
 PR = "r1"
@@ -9,8 +10,6 @@ ${LICENSE};md5=3775480a712fc46a69647678acb234cb"
 
 FILESPATH =+ "${WORKSPACE}:"
 SRC_DIR = "${WORKSPACE}/qcom-opensource/location/location_hal_daemon/"
-CPPFLAGS_append = " -DUSE_ANDROID_LOGGING "
-LDFLAGS_append = " -llog "
 S = "${WORKDIR}/qcom-opensource/location/location_hal_daemon"
 
 DEPENDS = "loc-pla-hdr loc-hal location-service gps-utils location-api-iface location-api"
