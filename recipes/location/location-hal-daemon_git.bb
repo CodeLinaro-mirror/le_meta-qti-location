@@ -20,6 +20,7 @@ EXTRA_OECONF = "--with-core-includes=${WORKSPACE}/system/core/include \
 
 DEPENDS += "${@oe.utils.conditional('BASEMACHINE', 'mdm9607', 'powermanager-lib', '', d)}"
 EXTRA_OECONF += "${@oe.utils.conditional('BASEMACHINE', 'mdm9607', '--enable-target=${BASEMACHINE}', '', d)}"
+EXTRA_OECONF += "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', '--with-systemd', '', d)}"
 
 INITSCRIPT_NAME = "location_hal_initializer"
 INITSCRIPT_PARAMS = "start 98 2 3 4 5 . stop 2 0 1 6 ."
@@ -43,6 +44,12 @@ do_install_append () {
         ## Install systemd service unit file
         install -d ${D}${sysconfdir}/systemd/system/
         install -m 0644 ${WORKDIR}/location_hal_daemon.service -D ${D}${sysconfdir}/systemd/system/location_hal_daemon.service
+
+        ## Add powermgr also to supplementary groups if POWERMANAGER is enabled
+        if ${@oe.utils.conditional('BASEMACHINE', 'mdm9607', 'true', 'false', d)}; then
+            sed -i 's/SupplementaryGroups=diag/SupplementaryGroups=diag powermgr/' \
+                    ${D}${sysconfdir}/systemd/system/location_hal_daemon.service
+        fi
         install -d ${D}${sysconfdir}/systemd/system/multi-user.target.wants/
         ln -sf /etc/systemd/system/location_hal_daemon.service \
                           ${D}/etc/systemd/system/multi-user.target.wants/location_hal_daemon.service
