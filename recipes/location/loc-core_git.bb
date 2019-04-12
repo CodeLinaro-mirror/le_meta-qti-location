@@ -1,4 +1,4 @@
-inherit autotools-brokensep qcommon pkgconfig
+inherit autotools-brokensep pkgconfig
 require ${COREBASE}/meta-qti-location/recipes/include/common-location-defines.inc
 
 DESCRIPTION = "Loc Core"
@@ -9,7 +9,6 @@ ${LICENSE};md5=3775480a712fc46a69647678acb234cb"
 
 FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://hardware/qcom/gps/core/"
-SRC_DIR = "${WORKSPACE}/hardware/qcom/gps/core/"
 S = "${WORKDIR}/hardware/qcom/gps/core"
 
 DEPENDS = "gps-utils"
