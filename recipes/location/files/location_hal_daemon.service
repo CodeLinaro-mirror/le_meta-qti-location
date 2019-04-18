@@ -1,4 +1,4 @@
-# Copyright (c) 2018, The Linux Foundation. All rights reserved.
+# Copyright (c) 2018,2019, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -28,7 +28,8 @@
 [Unit]
 Description=location remote service launcher
 SourcePath=/usr/bin/location_hal_daemon
-After=sysinit.target data.mount mount-data.service logd.service
+Requires=data.mount
+After=data.mount logd.service
 
 [Service]
 User=gps
