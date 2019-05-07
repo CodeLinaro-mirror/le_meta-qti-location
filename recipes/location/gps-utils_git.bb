@@ -1,4 +1,4 @@
-inherit autotools-brokensep qcommon pkgconfig
+inherit autotools-brokensep pkgconfig
 require ${COREBASE}/meta-qti-location/recipes/include/common-location-defines.inc
 
 DESCRIPTION = "GPS Utils"
@@ -9,7 +9,6 @@ ${LICENSE};md5=3775480a712fc46a69647678acb234cb"
 
 FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://hardware/qcom/gps/utils/"
-SRC_DIR = "${WORKSPACE}/hardware/qcom/gps/utils/"
 S = "${WORKDIR}/hardware/qcom/gps/utils"
 
 DEPENDS = "glib-2.0 libcutils loc-pla-hdr location-api-iface"
