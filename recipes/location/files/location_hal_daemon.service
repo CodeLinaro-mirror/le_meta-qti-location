@@ -39,7 +39,7 @@ RemainAfterExit=yes
 ExecStart=/usr/bin/location_hal_daemon
 ExecStop=
 # Start as user gps, which already has locclient group
-SupplementaryGroups=diag
+SupplementaryGroups=diag inet
 CapabilityBoundingSet=CAP_SETGID CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_SETGID CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 
