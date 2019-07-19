@@ -9,7 +9,7 @@ ${LICENSE};md5=3775480a712fc46a69647678acb234cb"
 FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://hardware/qcom/gps/"
 S = "${WORKDIR}/hardware/qcom/gps"
-DEPENDS = "glib-2.0 gps-utils qmi qmi-framework data loc-pla loc-flp-hdr libcutils"
+DEPENDS = "glib-2.0 gps-utils qmi qmi-framework data data-oss loc-pla loc-flp-hdr libcutils"
 EXTRA_OECONF = "--with-core-includes=${WORKSPACE}/system/core/include \
                 --with-glib"
 
