@@ -19,7 +19,9 @@ EXTRA_OECONF = "--with-core-includes=${WORKSPACE}/system/core/include \
                 --with-glib"
 
 DEPENDS += "${@oe.utils.conditional('BASEMACHINE', 'mdm9607', 'powermanager-lib', '', d)}"
-EXTRA_OECONF += "${@oe.utils.conditional('BASEMACHINE', 'mdm9607', '--enable-target=${BASEMACHINE}', '', d)}"
+DEPENDS += "${@oe.utils.conditional('BASEMACHINE', 'sdxpoorwills', 'powermanager-lib', '', d)}"
+EXTRA_OECONF += "${@oe.utils.conditional('BASEMACHINE', 'mdm9607', '--enable-target-mdm9607=yes', '', d)}"
+EXTRA_OECONF += "${@oe.utils.conditional('BASEMACHINE', 'sdxpoorwills', '--enable-target-sdxpoorwills=yes', '', d)}"
 EXTRA_OECONF += "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', '--with-systemd', '', d)}"
 
 INITSCRIPT_NAME = "location_hal_initializer"
@@ -47,7 +49,11 @@ do_install_append () {
 
         ## Add powermgr also to supplementary groups if POWERMANAGER is enabled
         if ${@oe.utils.conditional('BASEMACHINE', 'mdm9607', 'true', 'false', d)}; then
-            sed -i 's/SupplementaryGroups=diag/SupplementaryGroups=diag powermgr/' \
+            sed -i 's/SupplementaryGroups=diag /SupplementaryGroups=diag powermgr /' \
+                    ${D}${sysconfdir}/systemd/system/location_hal_daemon.service
+        fi
+        if ${@oe.utils.conditional('BASEMACHINE', 'sdxpoorwills', 'true', 'false', d)}; then
+            sed -i 's/SupplementaryGroups=diag /SupplementaryGroups=diag powermgr /' \
                     ${D}${sysconfdir}/systemd/system/location_hal_daemon.service
         fi
         install -d ${D}${sysconfdir}/systemd/system/multi-user.target.wants/
