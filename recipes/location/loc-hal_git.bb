@@ -24,14 +24,23 @@ INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
 FILES_${PN} = "${libdir}/* ${sysconfdir}"
 INSANE_SKIP_${PN} = "dev-so"
 
-SRC_URI +="file://overlay/"
+SRC_URI +="file://confappend/"
 do_install_append() {
-   #Install overlay conf file for target,if exists
-   gpsConfOverlayFile='${WORKDIR}/overlay/${BASEMACHINE}/etc/gps.conf'
-   if [ -e ${gpsConfOverlayFile} ]; then
-       echo "Installing gps.conf overlay file: ${gpsConfOverlayFile}"
-       install -m 0644 -D "${gpsConfOverlayFile}" ${D}${sysconfdir}/gps.conf
-   else
-       install -m 0644 -D ${S}/etc/gps.conf ${D}${sysconfdir}/gps.conf
-   fi
+    #Install default gps.conf file
+    install -m 0644 -D ${S}/etc/gps.conf ${D}${sysconfdir}/gps.conf
+    # Auto specific changes for gps.conf
+    if ${@oe.utils.conditional('DISTRO', 'auto', 'true', 'false', d)}; then
+        # Change default DEBUG_LEVEL to 1
+        sed -i 's/DEBUG_LEVEL = 3/DEBUG_LEVEL = 1/' \
+                ${D}${sysconfdir}/gps.conf
+        # Enable DR Sync pulse
+        sed -i 's/DR_SYNC_ENABLED = 0/DR_SYNC_ENABLED = 1/' \
+                ${D}${sysconfdir}/gps.conf
+        # Append target specific confs
+       gpsConfAppendFile='${WORKDIR}/confappend/auto/etc/gps.conf_append'
+       if [ -e ${gpsConfAppendFile} ]; then
+           echo "Appending file: ${gpsConfAppendFile} to gps.conf"
+           cat ${gpsConfAppendFile} >> ${D}${sysconfdir}/gps.conf
+       fi
+    fi
 }
