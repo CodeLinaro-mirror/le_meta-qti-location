@@ -12,24 +12,8 @@ FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://qcom-opensource/location/utils/loc_socket/"
 S = "${WORKDIR}/qcom-opensource/location/utils/loc_socket"
 
-DEPENDS = "glib-2.0 loc-pla-hdr libcutils gps-utils"
+DEPENDS = "glib-2.0 loc-pla-hdr libcutils gps-utils qmi-framework-vendor"
 EXTRA_OECONF = "--with-glib"
-
-def oe_conf_coretech_ver(d):
-    if d.getVar('BASEMACHINE', True) == 'sdxpoorwills':
-        return "--enable-coretech20=no"
-    else:
-        return "--enable-coretech20=yes"
-
-def get_depends_coretech_ver(d):
-    ## qmi-framework-vendor is used in coretech-2.0 component and qmi-framework in coretech-1.0
-    if d.getVar('BASEMACHINE', True) == 'sdxpoorwills':
-        return "qmi-framework"
-    else:
-        return "qmi-framework-vendor"
-
-DEPENDS += "${@get_depends_coretech_ver(d)}"
-EXTRA_OECONF += "${@oe_conf_coretech_ver(d)}"
 
 ### check kernel version which supports qsocket vs qrtr
 EXTRA_OECONF += "${@bb.utils.contains_any('PREFERRED_VERSION_linux-msm', '3.18 4.4 4.9', '--enable-kernel-qrtr=no', '--enable-kernel-qrtr=yes', d)}"
