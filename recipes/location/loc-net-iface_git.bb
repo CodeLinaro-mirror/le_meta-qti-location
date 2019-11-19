@@ -17,6 +17,16 @@ EXTRA_OECONF = "--with-core-includes=${WORKSPACE}/system/core/include \
                 --with-locpla-includes=${STAGING_INCDIR}/loc-pla \
                 --with-glib"
 
+def oe_conf_mobileap_indication_enabled(d):
+    # Check if data mobileap has changes for register indication.
+    # not available for sdm845 target
+    if d.getVar('BASEMACHINE', True) == 'sdm845':
+        return "--enable-mobileap-indications=no"
+    else:
+        return "--enable-mobileap-indications=yes"
+
+EXTRA_OECONF += "${@oe_conf_mobileap_indication_enabled(d)}"
+
 PACKAGES = "${PN}"
 INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
 FILES_${PN} = "${libdir}/*"
