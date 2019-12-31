@@ -1,0 +1,24 @@
+##################################################
+# Engine Message (0x1C54)Log level control
+##################################################
+#LOG_LEVEL_MASK_ERROR (0x01)
+#LOG_LEVEL_MASK_WARN  (0x02)
+#LOG_LEVEL_MASK_INFO  (0x04)
+#LOG_LEVEL_MASK_DEBUG (0x08)
+#LOG_LEVEL_MASK_VERB  (0x10)
+# Log level mask in decimal
+EP_DIAG_MSG_LOG_LEVEL_MASK = 0
+
+##################################################
+# Engine Message (0x1C54)Log type control
+##################################################
+#LOG_TYPE_MASK_PLAYBACK (0x01)
+#LOG_TYPE_MASK_RTCM     (0x02)
+#LOG_TYPE_MASK_NMEA     (0x04)
+#LOG_TYPE_MASK_DEBUG    (0x08)
+# Log type mask in decimal
+EP_DIAG_MSG_LOG_TYPE_MASK = 0
+
+AUTO_START_GNSS = 1
+GNSS_SESSION_TBF_MS = 100
+

@@ -16,6 +16,9 @@ EXTRA_OECONF = "--with-glib"
 
 PACKAGES = "${PN}"
 INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
-FILES_${PN} = "${libdir}/*"
+FILES_${PN} = "${libdir}/* ${sysconfdir}"
 INSANE_SKIP_${PN} = "dev-so"
 
+do_install_append() {
+    install -m 0644 -D ${WORKSPACE}/gps/etc/qapi.conf ${D}${sysconfdir}/qapi.conf
+}
