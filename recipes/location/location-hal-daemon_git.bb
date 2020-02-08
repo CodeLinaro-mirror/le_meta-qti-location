@@ -18,10 +18,10 @@ EXTRA_OECONF = "--with-core-includes=${WORKSPACE}/system/core/include \
                 --with-locationapi-includes=${STAGING_INCDIR}/location-api-iface \
                 --with-glib"
 
-DEPENDS += "${@oe.utils.conditional('BASEMACHINE', 'mdm9607', 'powermanager-lib', '', d)}"
+#DEPENDS += "${@oe.utils.conditional('BASEMACHINE', 'mdm9607', 'powermanager-lib', '', d)}"
 DEPENDS += "${@oe.utils.conditional('BASEMACHINE', 'sdxpoorwills', 'powermanager-lib', '', d)}"
 DEPENDS += "${@oe.utils.conditional('BASEMACHINE', 'sdxprairie', 'powermanager-lib', '', d)}"
-EXTRA_OECONF += "${@oe.utils.conditional('BASEMACHINE', 'mdm9607', '--enable-target-mdm9607=yes', '', d)}"
+#EXTRA_OECONF += "${@oe.utils.conditional('BASEMACHINE', 'mdm9607', '--enable-target-mdm9607=yes', '', d)}"
 EXTRA_OECONF += "${@oe.utils.conditional('BASEMACHINE', 'sdxpoorwills', '--enable-target-sdxpoorwills=yes', '', d)}"
 EXTRA_OECONF += "${@oe.utils.conditional('BASEMACHINE', 'sdxprairie', '--enable-target-sdxprairie=yes', '', d)}"
 EXTRA_OECONF += "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', '--with-systemd', '', d)}"
