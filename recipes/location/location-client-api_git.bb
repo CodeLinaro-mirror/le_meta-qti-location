@@ -11,10 +11,11 @@ FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://qcom-opensource/location/client_api/"
 S = "${WORKDIR}/qcom-opensource/location/client_api"
 
-DEPENDS = "glib-2.0 loc-pla-hdr libcutils gps-utils location-hal-daemon loc-diag-iface"
+DEPENDS = "glib-2.0 loc-pla-hdr libcutils gps-utils location-hal-daemon-hdr loc-diag-iface"
 EXTRA_OECONF = "--with-glib"
 
-PACKAGES = "${PN}"
+SOLIBS=".so"
+FILES_SOLIBSDEV=""
 INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
 FILES_${PN} = "${libdir}/*"
 INSANE_SKIP_${PN} = "dev-so"
