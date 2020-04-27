@@ -31,6 +31,7 @@
 # Delete the external ap local files on every reboot of mdm.
 # Invoke before loc hal daemon is launched
 #
+
 # $1 - msg to print
 function printToKernelMsg()
 {
@@ -38,33 +39,37 @@ function printToKernelMsg()
 }
 
 wait_for_dir_mount() {
-    while ! [ -d /dev ]
-    do
-        printToKernelMsg "waiting for /dev to mount"
-    done
-    while ! [ -d /var ]
+    while ! [ -d /var/tmp ]
     do
         printToKernelMsg "waiting for /var to mount"
+    done
+    while ! [ -d /data ]
+    do
+        printToKernelMsg "waiting for /data to mount"
     done
 }
 
 # for location hal daemon
 printToKernelMsg "Starting location_hald_preinit_handler.sh. Pid: $$."
 
-if ! [ -e /var/tmp/.location_hald ]
+# wait for dirs
+wait_for_dir_mount
+TMP_LOC_DIR="/var/tmp/location"
+TMP_LOC_HALD_TRACK_FILE="$TMP_LOC_DIR/.location_hald"
+if ! [ -e $TMP_LOC_HALD_TRACK_FILE ]
 then
-    seenforce_current=`getenforce`
-    printToKernelMsg "Current seenforce mode: $seenforce_current"
-    setenforce 0
+    if ! [ -d $TMP_LOC_DIR ]
+    then
+        printToKernelMsg "$TMP_LOC_DIR not available yet"
+        mkdir $TMP_LOC_DIR
+    fi
     # create a tracking file in temp folder
-    touch /var/tmp/.location_hald
+    touch $TMP_LOC_HALD_TRACK_FILE
     printToKernelMsg "Pre starting location hal daemon: $?"
-    printToKernelMsg "Number of files in extap_locclient - "$(ls /data/vendor/location/extap_locclient/|wc -l)""
+    printToKernelMsg "Pre - num of files in extap_locclient - "$(ls /data/vendor/location/extap_locclient/|wc -l)""
     rm /data/vendor/location/extap_locclient/*
     printToKernelMsg "Deleting all extap local files : $?"
-    printToKernelMsg "Number of files in extap_locclient - "$(ls /data/vendor/location/extap_locclient/|wc -l)""
-    setenforce $seenforce_current
-    printToKernelMsg "Revert to original seenforce : $(getenforce)"
+    printToKernelMsg "Post - num of files in extap_locclient - "$(ls /data/vendor/location/extap_locclient/|wc -l)""
 else
     printToKernelMsg "location hal daemon has already started."
 fi

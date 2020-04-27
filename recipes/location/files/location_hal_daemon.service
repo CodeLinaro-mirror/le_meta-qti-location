@@ -36,7 +36,7 @@ User=gps
 Group=gps
 Restart=always
 RemainAfterExit=yes
-ExecStartPre=+/bin/sh /usr/bin/location_hald_preinit_handler.sh
+ExecStartPre=/usr/bin/location_hald_preinit_handler.sh
 ExecStart=/usr/bin/location_hal_daemon
 ExecStop=
 # Start as user gps, which already has locclient group
