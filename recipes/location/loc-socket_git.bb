@@ -12,11 +12,10 @@ FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://qcom-opensource/location/utils/loc_socket/"
 S = "${WORKDIR}/qcom-opensource/location/utils/loc_socket"
 
-DEPENDS = "glib-2.0 loc-pla-hdr libcutils gps-utils qmi-framework"
+DEPENDS = "glib-2.0 loc-pla-hdr libcutils gps-utils"
 EXTRA_OECONF = "--with-glib"
 
-### check kernel version which supports qsocket vs qrtr
-EXTRA_OECONF += "${@bb.utils.contains_any('PREFERRED_VERSION_linux-msm', '3.18 4.4 4.9', '--enable-kernel-qrtr=no', '--enable-kernel-qrtr=yes', d)}"
+# additional configuration in loc-socket_git.bbappend
 
 PACKAGES = "${PN}"
 INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
