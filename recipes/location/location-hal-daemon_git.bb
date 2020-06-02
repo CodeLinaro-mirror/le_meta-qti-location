@@ -12,18 +12,13 @@ FILESPATH =+ "${WORKSPACE}:"
 SRC_DIR = "${WORKSPACE}/qcom-opensource/location/location_hal_daemon/"
 S = "${WORKDIR}/qcom-opensource/location/location_hal_daemon"
 
-DEPENDS = "loc-pla-hdr loc-hal location-service gps-utils location-api-iface location-api"
+DEPENDS = "loc-pla-hdr loc-hal gps-utils location-api-iface location-api"
 
 EXTRA_OECONF = "--with-core-includes=${WORKSPACE}/system/core/include \
                 --with-locationapi-includes=${STAGING_INCDIR}/location-api-iface \
                 --with-glib"
 
-#DEPENDS += "${@oe.utils.conditional('BASEMACHINE', 'mdm9607', 'powermanager-lib', '', d)}"
-DEPENDS += "${@oe.utils.conditional('BASEMACHINE', 'sdxpoorwills', 'powermanager-lib', '', d)}"
-DEPENDS += "${@oe.utils.conditional('BASEMACHINE', 'sdxprairie', 'powermanager-lib', '', d)}"
-#EXTRA_OECONF += "${@oe.utils.conditional('BASEMACHINE', 'mdm9607', '--enable-target-mdm9607=yes', '', d)}"
-EXTRA_OECONF += "${@oe.utils.conditional('BASEMACHINE', 'sdxpoorwills', '--enable-target-sdxpoorwills=yes', '', d)}"
-EXTRA_OECONF += "${@oe.utils.conditional('BASEMACHINE', 'sdxprairie', '--enable-target-sdxprairie=yes', '', d)}"
+# location-hal-daemon_git.bbappend has additional configs
 EXTRA_OECONF += "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', '--with-systemd', '', d)}"
 EXTRA_OECONF += "${@oe.utils.conditional('DISTRO', 'auto', '--with-auto_feature', '', d)}"
 
@@ -32,6 +27,7 @@ INITSCRIPT_PARAMS = "start 98 2 3 4 5 . stop 2 0 1 6 ."
 
 SRC_URI +="file://location_hal_daemon.service"
 SRC_URI +="file://location_hal_daemon-tmpfilesd.conf"
+SRC_URI +="file://location_hald_preinit_handler.sh"
 
 PACKAGES = "${PN}"
 FILES_${PN} += "${libdir}/*"
@@ -45,6 +41,10 @@ do_install_append () {
         ## Install systemd-tmpfiles config file
         install -d ${D}${sysconfdir}/tmpfiles.d/
         install -m 0644 ${WORKDIR}/location_hal_daemon-tmpfilesd.conf ${D}${sysconfdir}/tmpfiles.d/${BPN}.conf
+
+        ## install loc hald preinit handler
+        install -d ${D}${bindir}
+        install -m 0755 ${WORKDIR}/location_hald_preinit_handler.sh ${D}${bindir}/
 
         ## Install systemd service unit file
         install -d ${D}${sysconfdir}/systemd/system/
