@@ -56,11 +56,11 @@ do_install_append () {
                     ${D}${sysconfdir}/systemd/system/location_hal_daemon.service
         fi
         if ${@oe.utils.conditional('BASEMACHINE', 'sdxpoorwills', 'true', 'false', d)}; then
-            sed -i 's/SupplementaryGroups=diag /SupplementaryGroups=diag powermgr /' \
+            sed -i 's/SupplementaryGroups=diag /SupplementaryGroups=diag powermgr vnw /' \
                     ${D}${sysconfdir}/systemd/system/location_hal_daemon.service
         fi
         if ${@oe.utils.conditional('BASEMACHINE', 'sdxprairie', 'true', 'false', d)}; then
-            sed -i 's/SupplementaryGroups=diag /SupplementaryGroups=diag powermgr /' \
+            sed -i 's/SupplementaryGroups=diag /SupplementaryGroups=diag powermgr vnw /' \
                     ${D}${sysconfdir}/systemd/system/location_hal_daemon.service
         fi
         install -d ${D}${sysconfdir}/systemd/system/multi-user.target.wants/
