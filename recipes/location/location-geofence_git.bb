@@ -22,9 +22,6 @@ PR = "r1"
 LDFLAGS += "-Wl,--build-id=sha1"
 
 PACKAGES = "${PN}"
-#Disable the split of debug information into -dbg files
-INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
-
 FILES_${PN} = "${libdir}/*"
 FILES_${PN} += "/usr/include/*"
 # The geofence package contains symlinks that trip up insane
