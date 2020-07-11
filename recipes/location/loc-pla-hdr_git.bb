@@ -12,7 +12,7 @@ SRC_URI = "file://hardware/qcom/gps/pla/oe/"
 SRC_DIR = "${WORKSPACE}/hardware/qcom/gps/pla/oe/"
 S = "${WORKDIR}/hardware/qcom/gps/pla/oe"
 
-DEPENDS = "system-core"
+DEPENDS += "${@bb.utils.contains('MACHINE_FEATURES', 'qti-location', 'libutils libcutils liblog', 'system-core', d)}"
 
 do_configure() {
 }
@@ -24,3 +24,6 @@ do_install() {
     install -d ${D}${includedir}
     install -m 644 ${S}/*.h ${D}${includedir}
 }
+
+PACKAGES = "${PN}"
+FILES_${PN} += "/usr/include/*"
