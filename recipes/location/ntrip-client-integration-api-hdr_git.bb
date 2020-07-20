@@ -1,19 +1,21 @@
-inherit autotools qcommon qlicense qprebuilt
+inherit autotools
 
 DESCRIPTION = "Ntrip client integration api hdr"
 PR = "r1"
+LICENSE = "BSD"
+LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/\
+${LICENSE};md5=3775480a712fc46a69647678acb234cb"
+
+PACKAGE_ARCH ?= "${MACHINE_ARCH}"
 
 FILESPATH =+ "${WORKSPACE}:"
-SRC_DIR = "${WORKSPACE}/qcom-opensource/location/ntrip-client-integration-api/"
-S = "${WORKDIR}/qcom-opensource/location/ntrip-client-integration-api/"
+SRC_URI = "file://qcom-opensource/location/ntrip-client-integration-api/"
+S = "${WORKDIR}/qcom-opensource/location/ntrip-client-integration-api"
 FILES_${PN} += "/usr/*"
 PACKAGES = "${PN}"
 
-do_configure() {
-}
-
-do_compile() {
-}
+do_configure[noexec] = "1"
+do_compile[noexec] = "1"
 
 do_install() {
     install -d ${D}${includedir}
