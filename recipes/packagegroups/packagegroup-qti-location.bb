@@ -6,7 +6,7 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 inherit packagegroup
 
 PACKAGES = "\
-    packagegroup-qti-location-hal \
+    ${@bb.utils.contains_any("MACHINE_FEATURES", "qti-location", "packagegroup-qti-location", "", d)} \
     "
 
 
