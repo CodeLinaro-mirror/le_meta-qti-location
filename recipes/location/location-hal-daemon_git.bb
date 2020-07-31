@@ -27,7 +27,6 @@ INITSCRIPT_PARAMS = "start 98 2 3 4 5 . stop 2 0 1 6 ."
 
 SRC_URI +="file://location_hal_daemon.service"
 SRC_URI +="file://location_hal_daemon-tmpfilesd.conf"
-SRC_URI +="file://location_hald_preinit_handler.sh"
 
 PACKAGES = "${PN}"
 FILES_${PN} += "${libdir}/*"
@@ -41,10 +40,6 @@ do_install_append () {
         ## Install systemd-tmpfiles config file
         install -d ${D}${sysconfdir}/tmpfiles.d/
         install -m 0644 ${WORKDIR}/location_hal_daemon-tmpfilesd.conf ${D}${sysconfdir}/tmpfiles.d/${BPN}.conf
-
-        ## install loc hald preinit handler
-        install -d ${D}${bindir}
-        install -m 0755 ${WORKDIR}/location_hald_preinit_handler.sh ${D}${bindir}/
 
         ## Install systemd service unit file
         install -d ${D}${sysconfdir}/systemd/system/
