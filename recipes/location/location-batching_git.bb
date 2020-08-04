@@ -1,12 +1,14 @@
-inherit autotools qcommon qlicense qprebuilt
+inherit autotools-brokensep pkgconfig
 require ${COREBASE}/meta-qti-location/recipes/include/common-location-defines.inc
 
 DESCRIPTION = "GPS FLP Batching"
 PR = "r1"
+LICENSE = "BSD"
+LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/\
+${LICENSE};md5=3775480a712fc46a69647678acb234cb"
 
 FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://hardware/qcom/gps/batching/"
-SRC_DIR = "${WORKSPACE}/hardware/qcom/gps/batching/"
 S = "${WORKDIR}/hardware/qcom/gps/batching"
 
 DEPENDS = "liblog gps-utils loc-core"
