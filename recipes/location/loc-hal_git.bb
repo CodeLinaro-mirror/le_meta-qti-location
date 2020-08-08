@@ -1,11 +1,9 @@
-inherit autotools-brokensep qcommon pkgconfig
+inherit autotools-brokensep pkgconfig
 require ${COREBASE}/meta-qti-location/recipes/include/common-location-defines.inc
+require ${COREBASE}/meta-qti-location/recipes/include/location-license-bsd3-clause.inc
 
 DESCRIPTION = "GPS Loc HAL"
 PR = "r5"
-LICENSE = "BSD"
-LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/\
-${LICENSE};md5=3775480a712fc46a69647678acb234cb"
 
 FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://hardware/qcom/gps/"
@@ -31,7 +29,7 @@ do_install_append() {
     #Install default gps.conf file
     install -m 0644 -D ${S}/etc/gps.conf ${D}${sysconfdir}/gps.conf
     # Auto specific changes for gps.conf
-    if ${@oe.utils.conditional('DISTRO', 'auto', 'true', 'false', d)}; then
+    if ${@bb.utils.contains('PACKAGECONFIG', 'loc-automotive', 'true', 'false', d)}; then
         # Change default DEBUG_LEVEL to 1
         sed -i 's/DEBUG_LEVEL = 3/DEBUG_LEVEL = 1/' \
                 ${D}${sysconfdir}/gps.conf
