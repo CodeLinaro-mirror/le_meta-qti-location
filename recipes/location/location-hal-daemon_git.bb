@@ -56,16 +56,25 @@ do_install_append () {
                     ${D}${sysconfdir}/systemd/system/location_hal_daemon.service
         fi
         if ${@oe.utils.conditional('BASEMACHINE', 'sdxpoorwills', 'true', 'false', d)}; then
-            sed -i 's/SupplementaryGroups=diag /SupplementaryGroups=diag powermgr /' \
+            sed -i 's/SupplementaryGroups=diag /SupplementaryGroups=diag powermgr vnw /' \
                     ${D}${sysconfdir}/systemd/system/location_hal_daemon.service
         fi
         if ${@oe.utils.conditional('BASEMACHINE', 'sdxprairie', 'true', 'false', d)}; then
-            sed -i 's/SupplementaryGroups=diag /SupplementaryGroups=diag powermgr /' \
+            sed -i 's/SupplementaryGroups=diag /SupplementaryGroups=diag powermgr vnw /' \
                     ${D}${sysconfdir}/systemd/system/location_hal_daemon.service
         fi
-        install -d ${D}${sysconfdir}/systemd/system/multi-user.target.wants/
-        ln -sf /etc/systemd/system/location_hal_daemon.service \
-                          ${D}/etc/systemd/system/multi-user.target.wants/location_hal_daemon.service
+        if ${@bb.utils.contains_any('DISTRO_NAME', 'auto', 'true', 'false', d)}; then
+          # Enable the service for sockets.target
+          install -d ${D}${sysconfdir}/systemd/system/sockets.target.wants/
+          ln -sf /etc/systemd/system/location_hal_daemon.service \
+                    ${D}/etc/systemd/system/sockets.target.wants/location_hal_daemon.service
+        else
+          # Enable the service for multi-user.target
+          install -d ${D}${sysconfdir}/systemd/system/multi-user.target.wants/
+          ln -sf /etc/systemd/system/location_hal_daemon.service \
+                    ${D}/etc/systemd/system/multi-user.target.wants/location_hal_daemon.service
+        fi
+
     else
         install -m 0755 ${S}/location_hal_initializer -D ${D}${sysconfdir}/init.d/location_hal_initializer
     fi
