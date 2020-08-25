@@ -11,7 +11,6 @@ SRC_DIR = "${WORKSPACE}/qcom-opensource/location/loc_api/loc_api_v02/"
 S = "${WORKDIR}/qcom-opensource/location/loc_api/loc_api_v02"
 
 DEPENDS = "loc-core qmi-framework"
-DEPENDS += "${@bb.utils.contains('MACHINE_FEATURES', 'qti-location', 'libutils libcutils liblog', 'system-core', d)}"
 EXTRA_OECONF = "--with-locpla-includes=${STAGING_INCDIR}/loc-pla \
                 --with-glib"
 
