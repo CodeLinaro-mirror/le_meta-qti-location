@@ -31,9 +31,6 @@ do_install_append() {
         # Change default DEBUG_LEVEL to 1
         sed -i 's/DEBUG_LEVEL = 3/DEBUG_LEVEL = 1/' \
                 ${D}${sysconfdir}/gps.conf
-        # Enable DR Sync pulse
-        sed -i 's/DR_SYNC_ENABLED = 0/DR_SYNC_ENABLED = 1/' \
-                ${D}${sysconfdir}/gps.conf
         # Append target specific confs
        gpsConfAppendFile='${WORKDIR}/confappend/auto/etc/gps.conf_append'
        if [ -e ${gpsConfAppendFile} ]; then
