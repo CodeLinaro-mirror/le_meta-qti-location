@@ -20,5 +20,5 @@ FILES_${PN} = "${libdir}/* ${sysconfdir}"
 INSANE_SKIP_${PN} = "dev-so"
 
 do_install_append() {
-    install -m 0644 -D ${WORKSPACE}/gps/etc/qapi.conf ${D}${sysconfdir}/qapi.conf
+    install -m 0644 -D ${S}/etc/qapi.conf ${D}${sysconfdir}/qapi.conf
 }
