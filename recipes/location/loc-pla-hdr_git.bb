@@ -12,7 +12,7 @@ SRC_URI = "file://hardware/qcom/gps/pla/oe/"
 SRC_DIR = "${WORKSPACE}/hardware/qcom/gps/pla/oe/"
 S = "${WORKDIR}/hardware/qcom/gps/pla/oe"
 
-DEPENDS += "${@bb.utils.contains('MACHINE_FEATURES', 'qti-location', 'libutils libcutils liblog', 'system-core', d)}"
+DEPENDS += "libutils libcutils liblog"
 
 do_configure() {
 }

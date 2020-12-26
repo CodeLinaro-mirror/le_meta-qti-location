@@ -12,7 +12,7 @@ FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://qcom-opensource/location/integration_api/"
 S = "${WORKDIR}/qcom-opensource/location/integration_api"
 
-DEPENDS = "glib-2.0 loc-pla-hdr libcutils gps-utils location-hal-daemon-hdr"
+DEPENDS = "glib-2.0 loc-pla-hdr libcutils gps-utils location-api-msg-proto"
 EXTRA_OECONF = "--with-glib"
 
 SOLIBS=".so"
@@ -20,4 +20,3 @@ FILES_SOLIBSDEV=""
 INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
 FILES_${PN} = "${libdir}/*"
 INSANE_SKIP_${PN} = "dev-so"
-
