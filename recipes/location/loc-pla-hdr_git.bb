@@ -12,7 +12,8 @@ SRC_URI = "file://hardware/qcom/gps/pla/oe/"
 SRC_DIR = "${WORKSPACE}/hardware/qcom/gps/pla/oe/"
 S = "${WORKDIR}/hardware/qcom/gps/pla/oe"
 
-DEPENDS += "libutils libcutils liblog"
+DEPENDS += "libcutils liblog"
+DEPENDS += "${@oe.utils.conditional('BASEMACHINE', 'sdx20', '', 'libutils', d)}"
 
 do_configure() {
 }
