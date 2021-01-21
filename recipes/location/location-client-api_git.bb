@@ -12,7 +12,8 @@ SRC_URI = "file://qcom-opensource/location/client_api/"
 S = "${WORKDIR}/qcom-opensource/location/client_api"
 
 DEPENDS = "glib-2.0 loc-pla-hdr libcutils gps-utils location-api-msg-proto"
-EXTRA_OECONF = "--with-glib"
+EXTRA_OECONF = "--with-core-includes=${WORKSPACE}/system/core/include \
+                --with-glib"
 
 SOLIBS=".so"
 FILES_SOLIBSDEV=""
