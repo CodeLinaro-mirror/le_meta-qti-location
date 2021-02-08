@@ -11,7 +11,8 @@ SRC_URI = "file://qcom-opensource/location/location_api_msg_proto/"
 S = "${WORKDIR}/qcom-opensource/location/location_api_msg_proto"
 
 DEPENDS = "glib-2.0 protobuf protobuf-native loc-pla-hdr gps-utils"
-EXTRA_OECONF = "--with-glib"
+EXTRA_OECONF = "--with-core-includes=${WORKSPACE}/system/core/include \
+                --with-glib"
 
 FILES_${PN} += "${libdir}/*"
 

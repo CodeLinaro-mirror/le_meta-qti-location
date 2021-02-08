@@ -13,7 +13,19 @@ SRC_DIR = "${WORKSPACE}/hardware/qcom/gps/pla/oe/"
 S = "${WORKDIR}/hardware/qcom/gps/pla/oe"
 
 DEPENDS += "libcutils liblog"
-DEPENDS += "${@oe.utils.conditional('BASEMACHINE', 'sdx20', '', 'libutils', d)}"
+
+def target_in_list(list, prependstr, truestr, falsestr, d):
+    print("target_in_list")
+    target_set = set(d.getVar('BASEMACHINE', True).split())
+    print(target_set)
+    check_set = set(list.split())
+    print(check_set)
+    if target_set & check_set:
+        return prependstr+truestr
+    else:
+        return prependstr+falsestr
+
+DEPENDS += "${@target_in_list('sdx20 mdm9650 apq8017 apq8009', '', '', 'libutils', d)}"
 
 do_configure() {
 }
