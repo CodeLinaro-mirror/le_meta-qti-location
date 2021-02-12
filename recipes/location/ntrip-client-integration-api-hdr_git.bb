@@ -1,4 +1,5 @@
 inherit autotools
+require ${COREBASE}/meta-qti-location/recipes/include/common-location-defines.inc
 
 DESCRIPTION = "Ntrip client integration api hdr"
 PR = "r1"

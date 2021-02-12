@@ -13,9 +13,6 @@ SRC_DIR = "${WORKSPACE}/hardware/qcom/gps/"
 S = "${WORKDIR}/hardware/qcom/gps"
 
 DEPENDS = "loc-core"
-EXTRA_OECONF = "--with-locpla-includes=${STAGING_INCDIR}/loc-pla \
-                --with-core-includes=${WORKSPACE}/system/core/include \
-                --with-glib"
 
 CPPFLAGS += "-I${WORKSPACE}/base/include"
 

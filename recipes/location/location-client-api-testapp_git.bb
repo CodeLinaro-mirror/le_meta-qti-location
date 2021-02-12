@@ -12,6 +12,3 @@ SRC_DIR = "${WORKSPACE}/qcom-opensource/location/client_api_testapp/"
 S = "${WORKDIR}/qcom-opensource/location/client_api_testapp"
 
 DEPENDS = "location-client-api location-integration-api location-hal-daemon gps-utils"
-
-EXTRA_OECONF += "--with-core-includes=${WORKSPACE}/system/core/include \
-                --with-glib"
