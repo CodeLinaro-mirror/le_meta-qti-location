@@ -11,4 +11,5 @@ S = "${WORKDIR}/qcom-opensource/location/client_api_testapp"
 
 DEPENDS = "location-client-api location-integration-api location-hal-daemon"
 
-EXTRA_OECONF += "--with-glib"
+EXTRA_OECONF += "--with-glib \
+                 --with-core-includes=${WORKSPACE}/system/core/include"
