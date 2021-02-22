@@ -25,7 +25,7 @@ def target_in_list(list, prependstr, truestr, falsestr, d):
     else:
         return prependstr+falsestr
 
-DEPENDS += "${@target_in_list('sdx20 mdm9650 apq8017 apq8009', '', '', 'libutils', d)}"
+DEPENDS += "${@target_in_list('sdx20 mdm9650 apq8017 apq8009 apq8053', '', '', 'libutils', d)}"
 
 do_configure() {
 }
