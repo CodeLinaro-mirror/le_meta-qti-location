@@ -13,9 +13,6 @@ SRC_URI = "file://qcom-opensource/location/utils/loc_socket/"
 S = "${WORKDIR}/qcom-opensource/location/utils/loc_socket"
 
 DEPENDS = "virtual/kernel glib-2.0 loc-pla-hdr libcutils gps-utils"
-EXTRA_OECONF = "--with-core-includes=${WORKSPACE}/system/core/include \
-                --with-locpla-includes=${STAGING_INCDIR}/loc-pla \
-                --with-glib"
 
 # additional configuration in loc-socket_git.bbappend
 
