@@ -10,6 +10,3 @@ SRC_URI = "file://hardware/qcom/gps/location/"
 S = "${WORKDIR}/hardware/qcom/gps/location"
 
 DEPENDS = "gps-utils"
-EXTRA_OECONF = "--with-locpla-includes=${STAGING_INCDIR}/loc-pla \
-                --with-core-includes=${WORKSPACE}/system/core/include \
-                --with-glib"
