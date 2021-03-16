@@ -12,7 +12,6 @@ SRC_URI = "file://qcom-opensource/location/qapi/"
 S = "${WORKDIR}/qcom-opensource/location/qapi"
 
 DEPENDS = "location-client-api"
-EXTRA_OECONF = "--with-glib"
 
 PACKAGES = "${PN}"
 INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
