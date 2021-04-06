@@ -1,4 +1,4 @@
-inherit autotools-brokensep pkgconfig
+inherit autotools-brokensep pkgconfig locationcommon
 require ${COREBASE}/meta-qti-location/recipes/include/common-location-defines.inc
 
 DESCRIPTION = "GPS Loc Platform Library Abstraction"
@@ -14,18 +14,7 @@ S = "${WORKDIR}/hardware/qcom/gps/pla/oe"
 
 DEPENDS += "libcutils liblog"
 
-def target_in_list(list, prependstr, truestr, falsestr, d):
-    print("target_in_list")
-    target_set = set(d.getVar('BASEMACHINE', True).split())
-    print(target_set)
-    check_set = set(list.split())
-    print(check_set)
-    if target_set & check_set:
-        return prependstr+truestr
-    else:
-        return prependstr+falsestr
-
-DEPENDS += "${@target_in_list('sdx20 mdm9650 apq8017 apq8009 apq8053', '', '', 'libutils', d)}"
+DEPENDS += "${@loc_target_in_list('sdx20 mdm9650 apq8017 apq8009 apq8053', '', '', 'libutils', d)}"
 
 do_configure() {
 }
