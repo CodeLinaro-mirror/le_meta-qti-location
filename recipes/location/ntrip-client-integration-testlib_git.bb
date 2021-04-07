@@ -11,5 +11,3 @@ SRC_URI = "file://qcom-opensource/location/ntrip-client-integration-api/"
 S = "${WORKDIR}/qcom-opensource/location/ntrip-client-integration-api/"
 
 DEPENDS = "gps-utils ntrip-client-integration-api-hdr"
-EXTRA_OECONF = "--with-core-includes=${WORKSPACE}/system/core/include \
-                --with-glib"

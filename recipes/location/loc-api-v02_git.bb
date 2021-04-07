@@ -11,7 +11,5 @@ SRC_DIR = "${WORKSPACE}/qcom-opensource/location/loc_api/loc_api_v02/"
 S = "${WORKDIR}/qcom-opensource/location/loc_api/loc_api_v02"
 
 DEPENDS = "loc-core qmi-framework"
-EXTRA_OECONF = "--with-locpla-includes=${STAGING_INCDIR}/loc-pla \
-                --with-glib"
 
 CPPFLAGS += "-I${WORKSPACE}/base/include"
