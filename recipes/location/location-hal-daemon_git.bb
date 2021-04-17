@@ -11,9 +11,7 @@ S = "${WORKDIR}/qcom-opensource/location/location_hal_daemon"
 
 DEPENDS = "loc-pla-hdr loc-hal gps-utils location-api-iface location-api location-api-msg-proto"
 
-EXTRA_OECONF = "--with-core-includes=${WORKSPACE}/system/core/include \
-                --with-locationapi-includes=${STAGING_INCDIR}/location-api-iface \
-                --with-glib"
+EXTRA_OECONF += "--with-locationapi-includes=${STAGING_INCDIR}/location-api-iface"
 
 # location-hal-daemon_git.bbappend has additional configs
 EXTRA_OECONF += "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', '--with-systemd', '', d)}"
