@@ -11,8 +11,5 @@ SRC_DIR = "${WORKSPACE}/hardware/qcom/gps/core/"
 S = "${WORKDIR}/hardware/qcom/gps/core"
 
 DEPENDS = "gps-utils"
-EXTRA_OECONF = "--with-locpla-includes=${STAGING_INCDIR}/loc-pla \
-                --with-core-includes=${WORKSPACE}/system/core/include \
-                --with-glib"
 
 EXTRA_OECONF += "${@oe.utils.conditional('DISTRO', 'auto', '--with-auto_feature', '', d)}"

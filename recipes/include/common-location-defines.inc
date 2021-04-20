@@ -8,6 +8,10 @@ FILESPATH        =+ "${WORKSPACE}:"
 SRC_URI          = "file://${@d.getVar('SRC_DIR', True).replace('${WORKSPACE}/', '')}"
 PACKAGE_ARCH    ?= "${MACHINE_ARCH}"
 
+EXTRA_OECONF = "--with-locpla-includes=${STAGING_INCDIR}/loc-pla \
+                --with-core-includes=${WORKSPACE}/system/core/include \
+                --with-glib"
+
 # enabling logcat for target which supports logd in both internal and external builds.
 CFLAGS_append_mdm9607 = " -DUSE_ANDROID_LOGGING"
 CPPFLAGS_append_mdm9607 = " -DUSE_ANDROID_LOGGING"
