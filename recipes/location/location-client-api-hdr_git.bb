@@ -1,4 +1,4 @@
-inherit autotools qcommon qprebuilt
+inherit autotools qcommon
 
 DESCRIPTION = "Location client api hdr"
 PR = "r1"
