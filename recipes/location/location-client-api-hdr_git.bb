@@ -1,4 +1,5 @@
 inherit autotools qcommon
+#require ${COREBASE}/meta-qti-location/recipes/include/common-location-defines.inc
 
 DESCRIPTION = "Location client api hdr"
 PR = "r1"

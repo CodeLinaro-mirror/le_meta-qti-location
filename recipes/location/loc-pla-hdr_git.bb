@@ -1,4 +1,4 @@
-inherit autotools-brokensep pkgconfig
+inherit autotools-brokensep pkgconfig locationcommon
 require ${COREBASE}/meta-qti-location/recipes/include/common-location-defines.inc
 
 DESCRIPTION = "GPS Loc Platform Library Abstraction"
@@ -12,7 +12,9 @@ SRC_URI = "file://hardware/qcom/gps/pla/oe/"
 SRC_DIR = "${WORKSPACE}/hardware/qcom/gps/pla/oe/"
 S = "${WORKDIR}/hardware/qcom/gps/pla/oe"
 
-DEPENDS += "libutils libcutils liblog"
+DEPENDS += "libcutils liblog"
+
+DEPENDS += "${@loc_target_in_list('sdx20 mdm9650 apq8017 apq8009 apq8053', '', '', 'libutils', d)}"
 
 do_configure() {
 }
