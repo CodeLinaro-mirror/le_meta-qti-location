@@ -15,5 +15,6 @@ EXTRA_OECONF = "--with-core-includes=${WORKSPACE}/system/core/include \
                 --with-glib"
 
 PACKAGES = "${PN}"
-FILES_${PN} = "${libdir}/* ${sysconfdir}"
+FILES_${PN} = "${libdir}/* ${includedir}/* ${sysconfdir}"
+INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
 INSANE_SKIP_${PN} = "dev-so"

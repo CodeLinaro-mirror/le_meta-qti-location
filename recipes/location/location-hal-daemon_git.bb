@@ -26,7 +26,7 @@ SRC_URI +="file://location_hal_daemon-tmpfilesd.conf"
 PACKAGES = "${PN}"
 FILES_${PN} += "${libdir}/*"
 FILES_${PN} += "/usr/include/*"
-
+INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
 INSANE_SKIP_${PN} = "dev-deps"
 
 do_install_append () {
