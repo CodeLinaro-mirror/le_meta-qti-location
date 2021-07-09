@@ -12,6 +12,7 @@ SRC_URI = "file://hardware/qcom/gps/"
 SRC_DIR = "${WORKSPACE}/hardware/qcom/gps/"
 S = "${WORKDIR}/hardware/qcom/gps"
 
+PACKAGECONFIG[telux] = "--with-telsdk,--without-telsdk"
 DEPENDS = "loc-core"
 
 CPPFLAGS += "-I${WORKSPACE}/base/include"
