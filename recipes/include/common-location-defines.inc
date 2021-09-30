@@ -44,3 +44,11 @@ LDFLAGS_append_qcs40x = " -llog"
 CFLAGS_append_sdmsteppe = " -DUSE_ANDROID_LOGGING"
 CPPFLAGS_append_sdmsteppe = " -DUSE_ANDROID_LOGGING"
 LDFLAGS_append_sdmsteppe = " -llog"
+
+CFLAGS_append_sdxpoorwills = " -DUSE_ANDROID_LOGGING"
+CPPFLAGS_append_sdxpoorwills = " -DUSE_ANDROID_LOGGING"
+LDFLAGS_append_sdxpoorwills = " -llog"
+
+CFLAGS_append_sdxprairie = " -DUSE_ANDROID_LOGGING"
+CPPFLAGS_append_sdxprairie = " -DUSE_ANDROID_LOGGING"
+LDFLAGS_append_sdxprairie = " -llog"
