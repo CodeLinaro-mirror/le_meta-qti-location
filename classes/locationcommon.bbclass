@@ -30,11 +30,11 @@
 ## util function to add a config details based on whether target is
 ## in list or not
 def loc_target_in_list(list, prependstr, truestr, falsestr, d):
-    bb.note("target_in_list")
+    # bb.note("target_in_list")
     target_set = set(d.getVar('BASEMACHINE', True).split())
-    bb.note("target_set :" + str(target_set))
+    # bb.note("target_set :" + str(target_set))
     check_set = set(list.split())
-    bb.note("check_set :" + str(check_set))
+    # bb.note("check_set :" + str(check_set))
     if target_set & check_set:
         return prependstr+truestr
     else:
