@@ -12,7 +12,7 @@ S = "${WORKDIR}/hardware/qcom/gps"
 
 DEPENDS = "loc-core"
 
-CPPFLAGS += "-I${WORKSPACE}/base/include"
+EXTRA_OECONF += "${@oe.utils.conditional('DISTRO', 'auto', '--with-auto_feature', '', d)}"
 
 PACKAGES = "${PN}"
 INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
