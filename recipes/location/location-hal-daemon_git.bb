@@ -15,7 +15,6 @@ EXTRA_OECONF += "--with-locationapi-includes=${STAGING_INCDIR}/location-api-ifac
 
 # location-hal-daemon_git.bbappend has additional configs
 EXTRA_OECONF += "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', '--with-systemd', '', d)}"
-EXTRA_OECONF += "${@oe.utils.conditional('DISTRO', 'auto', '--with-auto_feature', '', d)}"
 
 INITSCRIPT_NAME = "location_hal_initializer"
 INITSCRIPT_PARAMS = "start 98 2 3 4 5 . stop 2 0 1 6 ."
@@ -26,7 +25,7 @@ SRC_URI +="file://location_hal_daemon-tmpfilesd.conf"
 PACKAGES = "${PN}"
 FILES_${PN} += "${libdir}/*"
 FILES_${PN} += "/usr/include/*"
-
+INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
 INSANE_SKIP_${PN} = "dev-deps"
 
 do_install_append () {
@@ -40,7 +39,7 @@ do_install_append () {
         install -d ${D}${sysconfdir}/systemd/system/
         install -m 0644 ${WORKDIR}/location_hal_daemon.service -D ${D}${sysconfdir}/systemd/system/location_hal_daemon.service
 
-        if ${@bb.utils.contains_any('DISTRO_NAME', 'auto', 'true', 'false', d)}; then
+        if ${@bb.utils.contains('PACKAGECONFIG', 'loc-automotive', 'true', 'false', d)}; then
           ## Add powermgr also to supplementary groups if POWERMANAGER is enabled
           if ${@oe.utils.conditional('BASEMACHINE', 'mdm9607', 'true', 'false', d)}; then
               sed -i 's/SupplementaryGroups=diag /SupplementaryGroups=diag powermgr /' \
