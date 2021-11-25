@@ -13,6 +13,13 @@ EXTRA_OECONF = "--with-locpla-includes=${STAGING_INCDIR}/loc-pla \
                 --with-core-includes=${WORKSPACE}/system/core/include \
                 --with-glib"
 
+# packageconfig for location automotive
+## legacy LE Auto targets
+PACKAGECONFIG ??= "${@oe.utils.conditional('DISTRO', 'auto', 'loc-automotive', '', d)}"
+## PDK based LE Auto targets
+PACKAGECONFIG_sa410m = "loc-automotive"
+PACKAGECONFIG[loc-automotive] = "--with-auto_feature"
+
 # enabling logcat for target which supports logd in both internal and external builds.
 # link with liblog, this library will take care of directing to logcat if logd is enabled, else
 # will redirect to default logging system.
