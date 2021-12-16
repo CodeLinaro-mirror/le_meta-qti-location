@@ -12,8 +12,6 @@ S = "${WORKDIR}/hardware/qcom/gps"
 
 DEPENDS = "loc-core"
 
-EXTRA_OECONF += "${@oe.utils.conditional('DISTRO', 'auto', '--with-auto_feature', '', d)}"
-
 PACKAGES = "${PN}"
 INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
 FILES_${PN} = "${libdir}/* ${sysconfdir}"
@@ -24,7 +22,7 @@ do_install_append() {
     #Install default gps.conf file
     install -m 0644 -D ${S}/etc/gps.conf ${D}${sysconfdir}/gps.conf
     # Auto specific changes for gps.conf
-    if ${@oe.utils.conditional('DISTRO', 'auto', 'true', 'false', d)}; then
+    if ${@bb.utils.contains('PACKAGECONFIG', 'loc-automotive', 'true', 'false', d)}; then
         # Change default DEBUG_LEVEL to 1
         sed -i 's/DEBUG_LEVEL = 3/DEBUG_LEVEL = 1/' \
                 ${D}${sysconfdir}/gps.conf
