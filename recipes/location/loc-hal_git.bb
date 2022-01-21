@@ -12,6 +12,8 @@ SRC_URI = "file://hardware/qcom/gps/"
 SRC_DIR = "${WORKSPACE}/hardware/qcom/gps/"
 S = "${WORKDIR}/hardware/qcom/gps"
 
+PACKAGECONFIG ??= "${@bb.utils.filter('DISTRO_FEATURES', 'qti-telux', d)}"
+PACKAGECONFIG[qti-telux] = "--with-telsdk,--without-telsdk"
 DEPENDS = "loc-core"
 EXTRA_OECONF = "--with-locpla-includes=${STAGING_INCDIR}/loc-pla \
                 --with-core-includes=${WORKSPACE}/system/core/include \
