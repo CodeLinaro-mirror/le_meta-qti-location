@@ -15,3 +15,4 @@ S = "${WORKDIR}/hardware/qcom/gps/core"
 DEPENDS = "gps-utils"
 
 EXTRA_OECONF += "${@oe.utils.conditional('DISTRO', 'auto', '--with-auto_feature', '', d)}"
+EXTRA_OECONF += "${@oe.utils.conditional('DISTRO', 'nad', '--with-auto_feature', '', d)}"
