@@ -18,7 +18,7 @@ EXTRA_OECONF += "--with-locationapi-includes=${STAGING_INCDIR}/location-api-ifac
 
 # location-hal-daemon_git.bbappend has additional configs
 EXTRA_OECONF += "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', '--with-systemd', '', d)}"
-EXTRA_OECONF += "${@oe.utils.conditional('DISTRO', 'auto', '--with-auto_feature', '', d)}"
+EXTRA_OECONF += "${@bb.utils.contains_any('DISTRO', 'auto nad', '--with-auto_feature', '', d)}"
 
 INITSCRIPT_NAME = "location_hal_initializer"
 INITSCRIPT_PARAMS = "start 98 2 3 4 5 . stop 2 0 1 6 ."
@@ -56,7 +56,7 @@ do_install_append () {
             sed -i 's/SupplementaryGroups=diag /SupplementaryGroups=diag powermgr vnw /' \
                     ${D}${sysconfdir}/systemd/system/location_hal_daemon.service
         fi
-        if ${@bb.utils.contains_any('DISTRO_NAME', 'auto', 'true', 'false', d)}; then
+        if ${@bb.utils.contains_any('DISTRO_NAME', 'auto nad-core', 'true', 'false', d)}; then
           # Enable the service for sockets.target
           install -d ${D}${sysconfdir}/systemd/system/sockets.target.wants/
           ln -sf /etc/systemd/system/location_hal_daemon.service \
