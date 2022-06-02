@@ -21,6 +21,7 @@ INITSCRIPT_PARAMS = "start 98 2 3 4 5 . stop 2 0 1 6 ."
 
 SRC_URI +="file://location_hal_daemon.service"
 SRC_URI +="file://location_hal_daemon-tmpfilesd.conf"
+SRC_URI +="file://location_hal_daemon_auto.conf"
 
 PACKAGES = "${PN}"
 FILES_${PN} += "${libdir}/*"
@@ -40,31 +41,16 @@ do_install_append () {
         install -m 0644 ${WORKDIR}/location_hal_daemon.service -D ${D}${sysconfdir}/systemd/system/location_hal_daemon.service
 
         if ${@bb.utils.contains('PACKAGECONFIG', 'loc-automotive', 'true', 'false', d)}; then
-          ## Add powermgr also to supplementary groups if POWERMANAGER is enabled
-          if ${@oe.utils.conditional('BASEMACHINE', 'mdm9607', 'true', 'false', d)}; then
-              sed -i 's/SupplementaryGroups=diag /SupplementaryGroups=diag powermgr /' \
-                      ${D}${sysconfdir}/systemd/system/location_hal_daemon.service
-          fi
-          ## Add powermgr and vnw also to supplementary groups
-          if ${@oe.utils.conditional('BASEMACHINE', 'sdxpoorwills', 'true', 'false', d)}; then
-              sed -i 's/SupplementaryGroups=diag /SupplementaryGroups=diag powermgr vnw /' \
-                      ${D}${sysconfdir}/systemd/system/location_hal_daemon.service
-          fi
-          if ${@oe.utils.conditional('BASEMACHINE', 'sdxprairie', 'true', 'false', d)}; then
-              sed -i 's/SupplementaryGroups=diag /SupplementaryGroups=diag powermgr vnw /' \
-                      ${D}${sysconfdir}/systemd/system/location_hal_daemon.service
-          fi
-
-          # Enable the service for sockets.target
-          install -d ${D}${sysconfdir}/systemd/system/sockets.target.wants/
-          ln -sf /etc/systemd/system/location_hal_daemon.service \
-                    ${D}/etc/systemd/system/sockets.target.wants/location_hal_daemon.service
-        else
-          # Enable the service for multi-user.target
-          install -d ${D}${sysconfdir}/systemd/system/multi-user.target.wants/
-          ln -sf /etc/systemd/system/location_hal_daemon.service \
-                    ${D}/etc/systemd/system/multi-user.target.wants/location_hal_daemon.service
+          ## Install auto specific drop-in file
+          install -d ${D}${sysconfdir}/systemd/system/location_hal_daemon.service.d
+          install -m 0644 ${WORKDIR}/location_hal_daemon_auto.conf \
+                  ${D}${sysconfdir}/systemd/system/location_hal_daemon.service.d/location_hal_daemon_auto.conf
         fi
+
+        # Enable the service for multi-user.target
+        install -d ${D}${sysconfdir}/systemd/system/multi-user.target.wants/
+        ln -sf /etc/systemd/system/location_hal_daemon.service \
+                  ${D}/etc/systemd/system/multi-user.target.wants/location_hal_daemon.service
     else
         install -m 0755 ${S}/location_hal_initializer -D ${D}${sysconfdir}/init.d/location_hal_initializer
     fi
