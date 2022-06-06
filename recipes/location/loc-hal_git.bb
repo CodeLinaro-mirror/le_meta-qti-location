@@ -1,4 +1,4 @@
-inherit autotools-brokensep pkgconfig
+inherit autotools-brokensep pkgconfig useradd
 require ${COREBASE}/meta-qti-location/recipes/include/common-location-defines.inc
 require ${COREBASE}/meta-qti-location/recipes/include/location-license-bsd3-clause.inc
 
@@ -33,4 +33,6 @@ do_install_append() {
            cat ${gpsConfAppendFile} >> ${D}${sysconfdir}/gps.conf
        fi
     fi
+    ## Ownership to gps:gps for gps.conf
+    chown gps:gps ${D}${sysconfdir}/gps.conf
 }
