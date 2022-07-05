@@ -6,22 +6,20 @@ PKG_RELEASE:=1
 
 LOCAL_SRC ?= $(TOPDIR)/src/hardware/qcom/gps/location/
 
-include $(INCLUDE_DIR)/package.mk
-
-TARGET_CFLAGS += -DUSE_MUSL -DOPENWRT_BUILD
+include ../location-common.mk
 
 define Package/location-api-iface
   SECTION:=QTI
   CATEGORY:=QTI-PACKAGES
-  TITLE:=Location Api Iface
+  TITLE:=Location Api Iface headers
 endef
 
 define Package/location-api-iface/Description
-	Location api interface package
+	Location api interface package headers
 endef
 
 define Build/Prepare
-	mkdir -p $(PKG_BUILD_DIR)/
+	$(MKDIR) $(PKG_BUILD_DIR)/
 	$(CP) $(LOCAL_SRC)/* $(PKG_BUILD_DIR)/
 endef
 
@@ -34,8 +32,8 @@ define Build/Compile
 endef
 
 define Build/InstallDev
-	$(INSTALL_DIR) $(1)/usr/include/
-	$(CP) $(PKG_BUILD_DIR)/*.h $(1)/usr/include/
+	$(INSTALL_DIR) $(1)$(USR_INC_DIR)
+	$(CP) $(PKG_BUILD_DIR)/*.h $(1)$(USR_INC_DIR)
 endef
 
 define Package/location-api-iface/install
