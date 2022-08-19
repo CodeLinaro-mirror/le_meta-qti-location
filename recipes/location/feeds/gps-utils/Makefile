@@ -7,17 +7,15 @@ PKG_FIXUP:=autoreconf
 
 LOCAL_SRC ?= $(TOPDIR)/src/hardware/qcom/gps/utils
 
-CONFIGURE_ARGS += --with-glib --with-core-includes=$(TOPDIR)/src/system/core/include
-TARGET_CFLAGS += -I$(STAGING_DIR)/usr/include/glib-2.0/ -DUSE_ANDROID_LOGGING -DUSE_MUSL -DOPENWRT_BUILD
-TARGET_LDFLAGS += -llog
+include ../location-common.mk
 
-include $(INCLUDE_DIR)/package.mk
+TARGET_LDFLAGS += -lexecinfo
 
 define Package/gps-utils
   SECTION:=QTI
   CATEGORY:=QTI-PACKAGES
   TITLE:=Gps Utils
-  DEPENDS:= +glib2 +libcutils +loc-pla-hdr +location-api-iface
+  DEPENDS:= +glib2 +libexecinfo +libcutils +loc-pla-hdr +location-api-iface
 endef
 
 define Package/gps-utils/Description
@@ -25,23 +23,23 @@ define Package/gps-utils/Description
 endef
 
 define Build/Prepare
-	mkdir -p $(PKG_BUILD_DIR)/
+	$(MKDIR) $(PKG_BUILD_DIR)/
 	$(CP) $(LOCAL_SRC)/* $(PKG_BUILD_DIR)/
 endef
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(STAGING_DIR)
-	mkdir -p $(1)/usr/include
-	mkdir -p $(1)/usr/lib
-	mkdir -p  $(1)/usr/share/pkgconfig
-	$(CP) $(PKG_BUILD_DIR)/*.h $(1)/usr/include/
-	$(CP) $(PKG_BUILD_DIR)/.libs/libgps_utils.so* $(1)/usr/lib/
-	$(CP) $(PKG_BUILD_DIR)/gps-utils.pc $(1)/usr/share/pkgconfig/
+	$(MKDIR) $(1)$(USR_INC_DIR)
+	$(MKDIR) $(1)$(USR_LIB_DIR)
+	$(MKDIR) $(1)$(USR_PKGCFG_DIR)
+	$(CP) $(PKG_BUILD_DIR)/*.h $(1)$(USR_INC_DIR)
+	$(CP) $(PKG_BUILD_DIR)/.libs/libgps_utils.so* $(1)$(USR_LIB_DIR)
+	$(CP) $(PKG_BUILD_DIR)/gps-utils.pc $(1)$(USR_PKGCFG_DIR)
 endef
 
 define Package/gps-utils/install
-	$(INSTALL_DIR) $(1)/usr/lib/
-	$(CP) $(PKG_BUILD_DIR)/.libs/libgps_utils.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)$(USR_LIB_DIR)
+	$(INSTALL_LIBS) $(PKG_BUILD_DIR)/.libs/libgps_utils.so* $(1)$(USR_LIB_DIR)
 endef
 
 $(eval $(call BuildPackage,gps-utils))

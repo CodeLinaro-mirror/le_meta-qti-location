@@ -6,9 +6,7 @@ PKG_RELEASE:=1
 
 LOCAL_SRC ?= $(TOPDIR)/src/hardware/qcom/gps/pla/oe/
 
-include $(INCLUDE_DIR)/package.mk
-
-TARGET_CFLAGS += -DUSE_MUSL -DOPENWRT_BUILD
+include ../location-common.mk
 
 define Package/loc-pla-hdr
   SECTION:=QTI
@@ -21,7 +19,7 @@ define Package/loc-pla-hdr/Description
 endef
 
 define Build/Prepare
-	mkdir -p $(PKG_BUILD_DIR)/
+	$(MKDIR) $(PKG_BUILD_DIR)/
 	$(CP) $(LOCAL_SRC)/* $(PKG_BUILD_DIR)/
 endef
 
@@ -34,8 +32,8 @@ define Build/Compile
 endef
 
 define Build/InstallDev
-	$(INSTALL_DIR) $(1)/usr/include/
-	$(CP) $(PKG_BUILD_DIR)/*.h $(1)/usr/include/
+	$(INSTALL_DIR) $(1)$(USR_INC_DIR)
+	$(CP) $(PKG_BUILD_DIR)/*.h $(1)$(USR_INC_DIR)
 endef
 
 define Package/loc-pla-hdr/install
