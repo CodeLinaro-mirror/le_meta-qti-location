@@ -14,6 +14,7 @@ define Package/loc-hal
   CATEGORY:=QTI-PACKAGES
   TITLE:=GPS Loc HAL
   DEPENDS:= +loc-core
+  USERID:=gps=1021:gps=1021 locclient=4021:locclient=4021
 endef
 
 define Package/loc-hal/Description
