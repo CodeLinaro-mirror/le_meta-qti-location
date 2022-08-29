@@ -23,10 +23,10 @@ SRC_URI +="file://location_hal_daemon.service"
 SRC_URI +="file://location_hal_daemon-tmpfilesd.conf"
 SRC_URI +="file://location_hal_daemon_auto.conf"
 
-PACKAGES = "${PN}"
 FILES_${PN} += "${libdir}/*"
 FILES_${PN} += "/usr/include/*"
-INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
+SOLIBS = ".so*"
+FILES_SOLIBSDEV = ""
 INSANE_SKIP_${PN} = "dev-deps"
 
 do_install_append () {
