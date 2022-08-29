@@ -14,7 +14,6 @@ EXTRA_OECONF = "--with-glib"
 
 SOLIBS=".so"
 FILES_SOLIBSDEV=""
-INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
 FILES_${PN} = "${libdir}/*"
 INSANE_SKIP_${PN} = "dev-so"
 

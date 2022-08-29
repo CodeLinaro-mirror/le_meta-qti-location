@@ -12,9 +12,9 @@ S = "${WORKDIR}/qcom-opensource/location/qapi"
 DEPENDS = "location-client-api"
 EXTRA_OECONF = "--with-glib"
 
-PACKAGES = "${PN}"
-INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
 FILES_${PN} = "${libdir}/* ${sysconfdir}"
+SOLIBS = ".so*"
+FILES_SOLIBSDEV = ""
 INSANE_SKIP_${PN} = "dev-so"
 
 do_install_append() {
