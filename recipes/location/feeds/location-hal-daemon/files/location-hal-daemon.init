@@ -50,6 +50,11 @@ create_required_dirs() {
     chown -R gps:gps /data/vendor/location
     # change the ownership of directory to gps user & locclient group.
     chown -R gps:locclient /dev/socket/loc_client
+    # restore sepolicy context for location folders.
+    # this will be removed once sepolicy team fix the issue of context not being set.
+    restorecon -vR /data/vendor/location
+    restorecon -vR /dev/socket/location
+    restorecon -vR /dev/socket/loc_client
 
     echo "Done creating folders for location hal daemon"
 }
