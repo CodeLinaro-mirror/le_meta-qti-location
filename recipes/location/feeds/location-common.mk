@@ -3,7 +3,7 @@ include $(INCLUDE_DIR)/package.mk
 
 # Default configs
 CONFIGURE_ARGS += --with-glib --with-core-includes=$(TOPDIR)/src/system/core/include
-TARGET_CFLAGS += -I$(STAGING_DIR)/usr/include/glib-2.0/ -DUSE_ANDROID_LOGGING -DUSE_MUSL -DOPENWRT_BUILD
+TARGET_CFLAGS += -I$(STAGING_DIR)/usr/include/glib-2.0/ -DUSE_ANDROID_LOGGING -DUSE_MUSL -DOPENWRT_BUILD -fpic
 TARGET_LDFLAGS += -llog
 
 # Define WORKSPACE variable which is used in autoconf makefiles.
