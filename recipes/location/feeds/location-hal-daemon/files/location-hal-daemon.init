@@ -1,0 +1,77 @@
+#!/bin/sh /etc/rc.common
+
+#Copyright (c) 2022 Qualcomm Innovation Center, Inc. All rights reserved.
+#SPDX-License-Identifier: BSD-3-Clause-Clear
+
+# Start after loc-laucnher
+START=77
+STOP=72
+
+USE_PROCD=1
+PROCD_DEBUG=1
+
+wait_for_data_dir_mount() {
+    while ! [ -d /data ]
+    do
+        echo "waiting for /data to mount"
+    done
+}
+
+wait_for_dev_dir_mount() {
+    while ! [ -d /dev/socket ]
+    do
+        echo "waiting for /dev to mount"
+    done
+}
+
+create_required_dirs() {
+    echo "Creating directories required for Location Hal daemon"
+
+    # folders in /data
+    wait_for_data_dir_mount
+    if [ ! -d /data/vendor/location/extap_locclient ]
+    then
+        mkdir -p /data/vendor/location/extap_locclient
+    fi
+
+    # folders in /dev
+    wait_for_dev_dir_mount
+    if [ ! -d /dev/socket/location/ehub ]
+    then
+        mkdir -p /dev/socket/location/ehub
+    fi
+    if [ ! -d /dev/socket/loc_client ]
+    then
+        mkdir -p /dev/socket/loc_client
+    fi
+    # loc_client folder needs to have write perm for locclient group.
+    chmod 775 /dev/socket/loc_client
+    # change the ownership of directory to gps user/group.
+    chown -R gps:gps /dev/socket/location
+    chown -R gps:gps /data/vendor/location
+    # change the ownership of directory to gps user & locclient group.
+    chown -R gps:locclient /dev/socket/loc_client
+
+    echo "Done creating folders for location hal daemon"
+}
+
+start_service() {
+    echo "Starting Location Hal daemon"
+    create_required_dirs
+    procd_open_instance
+    procd_set_param command /usr/bin/location_hal_daemon
+    procd_set_param respawn
+    [ -x /sbin/ujail -a -e /etc/capabilities/location-hal-daemon.json ] && {
+        procd_add_jail location_hal_daemon
+        procd_set_param capabilities /etc/capabilities/location-hal-daemon.json
+        procd_set_param user gps
+        procd_set_param group gps
+        procd_set_param no_new_privs 1
+    }
+    procd_close_instance
+}
+
+stop_service() {
+    echo "Stopping Location Hal daemon"
+    # commands to kill application
+}
