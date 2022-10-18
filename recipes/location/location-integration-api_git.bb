@@ -1,12 +1,9 @@
 inherit autotools-brokensep pkgconfig
 require ${COREBASE}/meta-qti-location/recipes/include/common-location-defines.inc
+require ${COREBASE}/meta-qti-location/recipes/include/location-license-bsd3-clause.inc
 
 DESCRIPTION = "location integration api library"
 PR = "r1"
-
-LICENSE = "BSD-3-Clause"
-LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/\
-${LICENSE};md5=550794465ba0ec5312d6919e203a55f9"
 
 FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://qcom-opensource/location/integration_api/"
