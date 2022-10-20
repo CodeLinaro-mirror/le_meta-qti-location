@@ -12,6 +12,6 @@ PACKAGE_ARCH    ?= "${MACHINE_ARCH}"
 ## legacy LE Auto targets
 PACKAGECONFIG ??= "${@oe.utils.conditional('DISTRO', 'auto', 'loc-automotive', '', d)}"
 ## PDK based LE Auto targets
-PACKAGECONFIG_sa415m = "loc-automotive"
+PACKAGECONFIG_sa415m = "loc-automotive "
 PACKAGECONFIG[loc-automotive] = "--with-auto_feature"
 
