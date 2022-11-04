@@ -45,12 +45,16 @@ do_install_append () {
           install -d ${D}${sysconfdir}/systemd/system/location_hal_daemon.service.d
           install -m 0644 ${WORKDIR}/location_hal_daemon_auto.conf \
                   ${D}${sysconfdir}/systemd/system/location_hal_daemon.service.d/location_hal_daemon_auto.conf
+          # Enable the service for sockets.target
+          install -d ${D}${sysconfdir}/systemd/system/sockets.target.wants/
+          ln -sf /etc/systemd/system/location_hal_daemon.service \
+                    ${D}/etc/systemd/system/sockets.target.wants/location_hal_daemon.service
+        else
+          # Enable the service for multi-user.target
+          install -d ${D}${sysconfdir}/systemd/system/multi-user.target.wants/
+          ln -sf /etc/systemd/system/location_hal_daemon.service \
+                    ${D}/etc/systemd/system/multi-user.target.wants/location_hal_daemon.service
         fi
-
-        # Enable the service for multi-user.target
-        install -d ${D}${sysconfdir}/systemd/system/multi-user.target.wants/
-        ln -sf /etc/systemd/system/location_hal_daemon.service \
-                  ${D}/etc/systemd/system/multi-user.target.wants/location_hal_daemon.service
     else
         install -m 0755 ${S}/location_hal_initializer -D ${D}${sysconfdir}/init.d/location_hal_initializer
     fi
