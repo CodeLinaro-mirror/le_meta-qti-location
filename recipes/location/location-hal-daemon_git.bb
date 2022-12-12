@@ -39,21 +39,23 @@ do_install_append () {
         ## Install systemd service unit file
         install -d ${D}${sysconfdir}/systemd/system/
         install -m 0644 ${WORKDIR}/location_hal_daemon.service -D ${D}${sysconfdir}/systemd/system/location_hal_daemon.service
-
         if ${@bb.utils.contains('PACKAGECONFIG', 'loc-automotive', 'true', 'false', d)}; then
           ## Install auto specific drop-in file
           install -d ${D}${sysconfdir}/systemd/system/location_hal_daemon.service.d
           install -m 0644 ${WORKDIR}/location_hal_daemon_auto.conf \
                   ${D}${sysconfdir}/systemd/system/location_hal_daemon.service.d/location_hal_daemon_auto.conf
-          # Enable the service for sockets.target
-          install -d ${D}${sysconfdir}/systemd/system/sockets.target.wants/
-          ln -sf /etc/systemd/system/location_hal_daemon.service \
+          #Install service files to socket.targets only if dependent boot optmization changes are present.
+          if ${@bb.utils.contains('PACKAGECONFIG', 'loc-bootkpi', 'true', 'false', d)}; then
+            # Enable the service for sockets.target
+            install -d ${D}${sysconfdir}/systemd/system/sockets.target.wants/
+            ln -sf /etc/systemd/system/location_hal_daemon.service \
                     ${D}/etc/systemd/system/sockets.target.wants/location_hal_daemon.service
-        else
-          # Enable the service for multi-user.target
-          install -d ${D}${sysconfdir}/systemd/system/multi-user.target.wants/
-          ln -sf /etc/systemd/system/location_hal_daemon.service \
+          else
+            # Enable the service for multi-user.target
+            install -d ${D}${sysconfdir}/systemd/system/multi-user.target.wants/
+            ln -sf /etc/systemd/system/location_hal_daemon.service \
                     ${D}/etc/systemd/system/multi-user.target.wants/location_hal_daemon.service
+          fi
         fi
     else
         install -m 0755 ${S}/location_hal_initializer -D ${D}${sysconfdir}/init.d/location_hal_initializer
