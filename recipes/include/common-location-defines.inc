@@ -18,7 +18,7 @@ EXTRA_OECONF = "--with-locpla-includes=${STAGING_INCDIR}/loc-pla \
 PACKAGECONFIG ??= "${@oe.utils.conditional('DISTRO', 'auto', 'loc-automotive', '', d)}"
 ## PDK based LE Auto targets
 PACKAGECONFIG_sa410m = "loc-automotive "
-PACKAGECONFIG_sa515m = "loc-automotive "
+PACKAGECONFIG_sa515m = "loc-automotive loc-bootkpi "
 PACKAGECONFIG[loc-automotive] = "--with-auto_feature"
 
 # enabling logcat for target which supports logd in both internal and external builds.
