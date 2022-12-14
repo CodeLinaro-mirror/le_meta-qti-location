@@ -19,6 +19,7 @@ PACKAGECONFIG ??= "${@oe.utils.conditional('DISTRO', 'auto', 'loc-automotive', '
 ## PDK based LE Auto targets
 PACKAGECONFIG_sa410m = "loc-automotive "
 PACKAGECONFIG_sa515m = "loc-automotive "
+PACKAGECONFIG_sa525m = "loc-automotive "
 PACKAGECONFIG[loc-automotive] = "--with-auto_feature"
 
 # enabling logcat for target which supports logd in both internal and external builds.
