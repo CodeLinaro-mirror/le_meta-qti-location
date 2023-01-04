@@ -12,9 +12,9 @@ S = "${WORKDIR}/hardware/qcom/gps"
 
 DEPENDS = "loc-core"
 
-PACKAGES = "${PN}"
-INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
 FILES_${PN} = "${libdir}/* ${sysconfdir}"
+SOLIBS = ".so*"
+FILES_SOLIBSDEV = ""
 INSANE_SKIP_${PN} = "dev-so"
 
 SRC_URI +="file://confappend/"
