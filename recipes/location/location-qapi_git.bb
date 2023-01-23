@@ -11,11 +11,11 @@ S = "${WORKDIR}/qcom-opensource/location/qapi"
 
 DEPENDS = "location-client-api"
 
-FILES_${PN} = "${libdir}/* ${sysconfdir} ${includedir}/*"
+FILES:${PN} = "${libdir}/* ${sysconfdir} ${includedir}/*"
 SOLIBS = ".so*"
 FILES_SOLIBSDEV = ""
-INSANE_SKIP_${PN} = "dev-so"
+INSANE_SKIP:${PN} = "dev-so"
 
-do_install_append() {
+do_install:append() {
     install -m 0644 -D ${S}/etc/qapi.conf ${D}${sysconfdir}/qapi.conf
 }

@@ -11,7 +11,7 @@ PACKAGES = "\
 
 
 # location packages which are common across various machines
-RDEPENDS_${PN} += "\
+RDEPENDS:${PN} += "\
     location-hal-daemon \
     location-client-api \
     loc-socket \
