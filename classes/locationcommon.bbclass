@@ -39,3 +39,22 @@ def loc_target_in_list(list, prependstr, truestr, falsestr, d):
         return prependstr+truestr
     else:
         return prependstr+falsestr
+
+# return yes if target supports modem, else no
+def is_modem_supported_target(d):
+    return loc_target_in_list('kalama', '', 'no', 'yes', d)
+
+## util function to get the OECONF for modem support availablity
+def oe_conf_modem_enabled_target(d):
+    if is_modem_supported_target(d) == 'yes':
+        # bb.note("oe_conf_modem_enabled_target : yes")
+        return '--with-modem-support=yes'
+    else:
+        # bb.note("oe_conf_modem_enabled_target : no")
+        return '--with-modem-support=no'
+
+## util function to get the CFLAGS append for modem support unavailability.
+def cflags_modem_disabled_target(d):
+    if is_modem_supported_target(d) == 'no':
+        # bb.note("cflags_modem_disabled_target : no")
+        return ' -DNO_MODEM_TARGET'

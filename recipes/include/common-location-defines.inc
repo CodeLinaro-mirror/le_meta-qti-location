@@ -34,3 +34,6 @@ CFLAGS:append = "${@loc_target_in_list('mdm9650', '', '', ' -DUSE_ANDROID_LOGGIN
 CPPFLAGS:append = "${@loc_target_in_list('mdm9650', '', '', ' -DUSE_ANDROID_LOGGING', d)}"
 LDFLAGS:append = "${@loc_target_in_list('mdm9650', '', '', ' -llog', d)}"
 
+# APQ targets having no modem
+CFLAGS:append = "${@cflags_modem_disabled_target(d)}"
+CPPFLAGS:append = "${@cflags_modem_disabled_target(d)}"
