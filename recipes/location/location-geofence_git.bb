@@ -21,10 +21,10 @@ PR = "r1"
 
 LDFLAGS += "-Wl,--build-id=sha1"
 
-FILES_${PN} = "${libdir}/*"
-FILES_${PN} += "/usr/include/*"
+FILES:${PN} = "${libdir}/*"
+FILES:${PN} += "/usr/include/*"
 SOLIBS = ".so*"
 FILES_SOLIBSDEV = ""
 
 # The geofence package contains symlinks that trip up insane
-INSANE_SKIP_${PN} = "dev-so"
+INSANE_SKIP:${PN} = "dev-so"

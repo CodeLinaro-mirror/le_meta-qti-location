@@ -13,9 +13,9 @@ DEPENDS = "virtual/kernel glib-2.0 loc-pla-hdr libcutils gps-utils"
 
 # additional configuration in loc-socket_git.bbappend
 
-FILES_${PN} += "${libdir}/*"
-FILES_${PN} += "/usr/include/*"
+FILES:${PN} += "${libdir}/*"
+FILES:${PN} += "/usr/include/*"
 SOLIBS = ".so*"
 FILES_SOLIBSDEV = ""
-INSANE_SKIP_${PN} = "dev-so"
+INSANE_SKIP:${PN} = "dev-so"
 
