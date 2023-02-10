@@ -13,3 +13,7 @@ DEPENDS = "gps-utils"
 EXTRA_OECONF = "--with-locpla-includes=${STAGING_INCDIR}/loc-pla \
                 --with-core-includes=${WORKSPACE}/system/core/include \
                 --with-glib"
+
+SOLIBS = ".so*"
+FILES_SOLIBSDEV = ""
+INSANE_SKIP_${PN} = "dev-so"

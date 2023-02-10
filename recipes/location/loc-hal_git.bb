@@ -19,9 +19,9 @@ EXTRA_OECONF = "--with-locpla-includes=${STAGING_INCDIR}/loc-pla \
 
 CPPFLAGS += "-I${WORKSPACE}/base/include"
 
-PACKAGES = "${PN}"
-INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
 FILES_${PN} = "${libdir}/* ${sysconfdir}"
+SOLIBS = ".so*"
+FILES_SOLIBSDEV = ""
 INSANE_SKIP_${PN} = "dev-so"
 
 SRC_URI +="file://confappend/"

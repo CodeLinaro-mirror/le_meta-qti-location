@@ -24,10 +24,10 @@ INITSCRIPT_PARAMS = "start 98 2 3 4 5 . stop 2 0 1 6 ."
 SRC_URI +="file://location_hal_daemon.service"
 SRC_URI +="file://location_hal_daemon-tmpfilesd.conf"
 
-PACKAGES = "${PN}"
 FILES_${PN} += "${libdir}/*"
 FILES_${PN} += "/usr/include/*"
-
+SOLIBS = ".so*"
+FILES_SOLIBSDEV = ""
 INSANE_SKIP_${PN} = "dev-deps"
 
 do_install_append () {

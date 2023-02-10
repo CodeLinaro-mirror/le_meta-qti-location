@@ -16,3 +16,7 @@ EXTRA_OECONF = "--with-locpla-includes=${STAGING_INCDIR}/loc-pla \
                 --with-glib"
 
 CPPFLAGS += "-I${WORKSPACE}/base/include"
+
+SOLIBS = ".so*"
+FILES_SOLIBSDEV = ""
+INSANE_SKIP_${PN} = "dev-so"
