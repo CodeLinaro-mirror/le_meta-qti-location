@@ -18,3 +18,7 @@ do_compile_prepend () {
     ./location_api_msg_protobuf_gen.sh
     cd -
 }
+
+SOLIBS = ".so*"
+FILES_SOLIBSDEV = ""
+INSANE_SKIP_${PN} = "dev-so"

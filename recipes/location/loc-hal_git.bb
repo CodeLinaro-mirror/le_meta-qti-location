@@ -14,9 +14,9 @@ PACKAGECONFIG_append = "${@bb.utils.filter('DISTRO_FEATURES', 'qti-telux', d)}"
 PACKAGECONFIG[qti-telux] = "--with-telsdk,--without-telsdk"
 DEPENDS = "loc-core"
 
-PACKAGES = "${PN}"
-INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
 FILES_${PN} = "${libdir}/* ${sysconfdir}"
+SOLIBS = ".so*"
+FILES_SOLIBSDEV = ""
 INSANE_SKIP_${PN} = "dev-so"
 
 SRC_URI +="file://confappend/"
