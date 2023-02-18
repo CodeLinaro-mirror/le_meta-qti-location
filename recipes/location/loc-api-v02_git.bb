@@ -13,3 +13,7 @@ S = "${WORKDIR}/qcom-opensource/location/loc_api/loc_api_v02"
 DEPENDS = "loc-core qmi-framework"
 
 CPPFLAGS += "-I${WORKSPACE}/base/include"
+
+SOLIBS = ".so*"
+FILES_SOLIBSDEV = ""
+INSANE_SKIP:${PN} = "dev-so"

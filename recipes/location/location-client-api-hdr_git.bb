@@ -8,7 +8,7 @@ PR = "r1"
 FILESPATH =+ "${WORKSPACE}:"
 SRC_DIR = "${WORKSPACE}/qcom-opensource/location/client_api/inc/"
 S = "${WORKDIR}/qcom-opensource/location/client_api/inc/"
-FILES_${PN} += "/usr/*"
+FILES:${PN} += "/usr/*"
 PACKAGES = "${PN}"
 
 do_configure[noexec] = "1"

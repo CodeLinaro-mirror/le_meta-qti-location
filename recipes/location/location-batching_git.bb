@@ -14,7 +14,7 @@ EXTRA_OECONF = "--with-core-includes=${WORKSPACE}/system/core/include \
                 --with-locpla-includes=${STAGING_INCDIR}/loc-pla \
                 --with-glib"
 
-PACKAGES = "${PN}"
-FILES_${PN} = "${libdir}/* ${includedir}/* ${sysconfdir}"
-INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
-INSANE_SKIP_${PN} = "dev-so"
+FILES:${PN} = "${libdir}/* ${includedir}/* ${sysconfdir}"
+SOLIBS = ".so*"
+FILES_SOLIBSDEV = ""
+INSANE_SKIP:${PN} = "dev-so"

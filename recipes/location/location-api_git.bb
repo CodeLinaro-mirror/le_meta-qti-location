@@ -10,3 +10,7 @@ SRC_URI = "file://hardware/qcom/gps/location/"
 S = "${WORKDIR}/hardware/qcom/gps/location"
 
 DEPENDS = "gps-utils"
+
+SOLIBS = ".so*"
+FILES_SOLIBSDEV = ""
+INSANE_SKIP:${PN} = "dev-so"
