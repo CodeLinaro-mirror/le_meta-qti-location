@@ -58,3 +58,5 @@ def cflags_modem_disabled_target(d):
     if is_modem_supported_target(d) == 'no':
         # bb.note("cflags_modem_disabled_target : no")
         return ' -DNO_MODEM_TARGET'
+    else:
+        return " "
