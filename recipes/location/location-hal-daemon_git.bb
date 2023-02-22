@@ -11,8 +11,6 @@ S = "${WORKDIR}/qcom-opensource/location/location_hal_daemon"
 
 DEPENDS = "loc-pla-hdr loc-hal gps-utils location-api-iface location-api location-api-msg-proto"
 
-EXTRA_OECONF += "--with-locationapi-includes=${STAGING_INCDIR}/location-api-iface"
-
 # location-hal-daemon_git.bbappend has additional configs
 EXTRA_OECONF += "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', '--with-systemd', '', d)}"
 
@@ -23,13 +21,13 @@ SRC_URI +="file://location_hal_daemon.service"
 SRC_URI +="file://location_hal_daemon-tmpfilesd.conf"
 SRC_URI +="file://location_hal_daemon_auto.conf"
 
-FILES_${PN} += "${libdir}/*"
-FILES_${PN} += "/usr/include/*"
+FILES:${PN} += "${libdir}/*"
+FILES:${PN} += "/usr/include/*"
 SOLIBS = ".so*"
 FILES_SOLIBSDEV = ""
-INSANE_SKIP_${PN} = "dev-deps"
+INSANE_SKIP:${PN} = "dev-deps"
 
-do_install_append () {
+do_install:append () {
 
     if ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'true', 'false', d)}; then
         ## Install systemd-tmpfiles config file

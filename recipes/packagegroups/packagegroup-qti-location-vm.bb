@@ -9,7 +9,7 @@ PACKAGES = "\
     packagegroup-qti-location-vm \
     "
 
-RDEPENDS_${PN} += "\
+RDEPENDS:${PN} += "\
     gps-utils \
     loc-socket \
     location-client-api \
