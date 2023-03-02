@@ -15,3 +15,7 @@ PACKAGECONFIG ??= "${@oe.utils.conditional('DISTRO', 'auto', 'loc-automotive', '
 PACKAGECONFIG_sa415m = "loc-automotive "
 PACKAGECONFIG[loc-automotive] = "--with-auto_feature"
 
+CFLAGS_append_sdxpoorwills = " -DUSE_ANDROID_LOGGING"
+CPPFLAGS_append_sdxpoorwills = " -DUSE_ANDROID_LOGGING"
+LDFLAGS_append_sdxpoorwills = " -llog"
+
