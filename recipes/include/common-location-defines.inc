@@ -6,7 +6,8 @@ inherit locationcommon
 # Below are common values, statements and functions.
 #
 FILESPATH        =+ "${WORKSPACE}:"
-SRC_URI          = "file://${@d.getVar('SRC_DIR', True).replace('${WORKSPACE}/', '')}"
+WORKSPACE_CHECK = "${@d.getVar('WORKSPACE') or ""}"
+SRC_URI          = "file://${@d.getVar('SRC_DIR', True).replace('${WORKSPACE_CHECK}/', '')}"
 PACKAGE_ARCH    ?= "${MACHINE_ARCH}"
 
 EXTRA_OECONF = "--with-locpla-includes=${STAGING_INCDIR}/loc-pla \
@@ -23,7 +24,7 @@ PACKAGECONFIG:sa525m = "loc-automotive "
 PACKAGECONFIG[loc-automotive] = "--with-auto_feature"
 
 ##Entries for VMs
-PACKAGECONFIG:append = "${@bb.utils.contains('MACHINE_FEATURES', 'qti-vm', 'loc-vm', '', d)}"
+PACKAGECONFIG:append = "${@bb.utils.contains('MACHINE_FEATURES', 'qti-vm-guest', 'loc-vm', '', d)}"
 ## Both VMs and EAPs will be treated in similar way
 PACKAGECONFIG[loc-vm] = "--with-external_ap"
 
