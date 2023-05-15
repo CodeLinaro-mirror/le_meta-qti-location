@@ -54,9 +54,9 @@ do_install_append () {
             sed -i 's/SupplementaryGroups=diag /SupplementaryGroups=diag powermgr vnw /' \
                     ${D}${sysconfdir}/systemd/system/location_hal_daemon.service
         fi
-        install -d ${D}${sysconfdir}/systemd/system/multi-user.target.wants/
+        install -d ${D}${sysconfdir}/systemd/system/sockets.target.wants/
         ln -sf /etc/systemd/system/location_hal_daemon.service \
-                          ${D}/etc/systemd/system/multi-user.target.wants/location_hal_daemon.service
+                          ${D}/etc/systemd/system/sockets.target.wants/location_hal_daemon.service
     else
         install -m 0755 ${S}/location_hal_initializer -D ${D}${sysconfdir}/init.d/location_hal_initializer
     fi
