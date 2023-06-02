@@ -13,7 +13,7 @@ define Package/loc-hal
   SECTION:=QTI
   CATEGORY:=QTI-PACKAGES
   TITLE:=GPS Loc HAL
-  DEPENDS:= +loc-core
+  DEPENDS:= +loc-core +libxml2
   USERID:=gps=1021:gps=1021 locclient=4021:locclient=4021
 endef
 
