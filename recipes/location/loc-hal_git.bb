@@ -12,7 +12,7 @@ S = "${WORKDIR}/hardware/qcom/gps"
 
 PACKAGECONFIG:append = "${@bb.utils.filter('DISTRO_FEATURES', 'qti-telux', d)}"
 PACKAGECONFIG[qti-telux] = "--with-telsdk,--without-telsdk"
-DEPENDS = "loc-core"
+DEPENDS = "loc-core libxml2"
 
 FILES:${PN} = "${libdir}/* ${sysconfdir}"
 SOLIBS = ".so*"
