@@ -13,7 +13,7 @@ MAKE_FLAGS += WORKSPACE=$(TOPDIR)/src
 MKDIR:=mkdir -p
 
 # install commands
-INSTALL_LIBS:=install -m0644
+INSTALL_LIBS:=$(CP)
 INSTALL_LOCATION_CONF:=install -m0644
 
 # common directories
