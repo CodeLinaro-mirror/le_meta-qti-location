@@ -60,5 +60,16 @@ do_install_append () {
     else
         install -m 0755 ${S}/location_hal_initializer -D ${D}${sysconfdir}/init.d/location_hal_initializer
     fi
+    if ${@bb.utils.contains('PACKAGECONFIG', 'loc-bootkpi', 'true', 'false', d)}; then
+        # Enable the service for sockets.target
+        install -d ${D}${sysconfdir}/systemd/system/sockets.target.wants/
+        ln -sf /etc/systemd/system/location_hal_daemon.service \
+                ${D}/etc/systemd/system/sockets.target.wants/location_hal_daemon.service
+    else
+        # Enable the service for multi-user.target
+        install -d ${D}${sysconfdir}/systemd/system/multi-user.target.wants/
+        ln -sf /etc/systemd/system/location_hal_daemon.service \
+                ${D}/etc/systemd/system/multi-user.target.wants/location_hal_daemon.service
+    fi
 }
 
