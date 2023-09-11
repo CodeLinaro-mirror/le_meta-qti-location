@@ -42,7 +42,7 @@ def loc_target_in_list(list, prependstr, truestr, falsestr, d):
 
 # return yes if target supports modem, else no
 def is_modem_supported_target(d):
-    return loc_target_in_list('kalama', '', 'no', 'yes', d)
+    return loc_target_in_list('kalama qcs6490', '', 'no', 'yes', d)
 
 ## util function to get the OECONF for modem support availablity
 def oe_conf_modem_enabled_target(d):
