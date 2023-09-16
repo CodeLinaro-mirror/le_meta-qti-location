@@ -11,3 +11,6 @@ SRC_DIR = "${WORKSPACE}/hardware/qcom/gps/core/"
 S = "${WORKDIR}/hardware/qcom/gps/core"
 
 DEPENDS = "gps-utils"
+SOLIBS = ".so*"
+FILES_SOLIBSDEV = ""
+INSANE_SKIP:${PN} = "dev-so"

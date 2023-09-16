@@ -13,6 +13,5 @@ DEPENDS = "glib-2.0 loc-pla-hdr libcutils gps-utils location-api-msg-proto locat
 
 SOLIBS=".so"
 FILES_SOLIBSDEV=""
-INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
-FILES_${PN} = "${libdir}/*"
-INSANE_SKIP_${PN} = "dev-so"
+FILES:${PN} = "${libdir}/*"
+INSANE_SKIP:${PN} = "dev-so"

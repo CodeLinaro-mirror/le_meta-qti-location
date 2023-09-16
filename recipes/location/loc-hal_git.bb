@@ -10,15 +10,17 @@ SRC_URI = "file://hardware/qcom/gps/"
 SRC_DIR = "${WORKSPACE}/hardware/qcom/gps/"
 S = "${WORKDIR}/hardware/qcom/gps"
 
-DEPENDS = "loc-core"
+PACKAGECONFIG:append = "${@bb.utils.filter('DISTRO_FEATURES', 'qti-telux', d)}"
+PACKAGECONFIG[qti-telux] = "--with-telsdk,--without-telsdk"
+DEPENDS = "loc-core libxml2"
 
-PACKAGES = "${PN}"
-INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
-FILES_${PN} = "${libdir}/* ${sysconfdir}"
-INSANE_SKIP_${PN} = "dev-so"
+FILES:${PN} = "${libdir}/* ${sysconfdir}"
+SOLIBS = ".so*"
+FILES_SOLIBSDEV = ""
+INSANE_SKIP:${PN} = "dev-so"
 
 SRC_URI +="file://confappend/"
-do_install_append() {
+do_install:append() {
     #Install default gps.conf file
     install -m 0644 -D ${S}/etc/gps.conf ${D}${sysconfdir}/gps.conf
     # Auto specific changes for gps.conf
