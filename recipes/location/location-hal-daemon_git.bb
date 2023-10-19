@@ -10,6 +10,7 @@ SRC_DIR = "${WORKSPACE}/qcom-opensource/location/location_hal_daemon/"
 S = "${WORKDIR}/qcom-opensource/location/location_hal_daemon"
 
 DEPENDS = "loc-pla-hdr loc-hal gps-utils location-api-iface location-api location-api-msg-proto"
+RDEPENDS:${PN} = "loc-hal"
 
 # location-hal-daemon_git.bbappend has additional configs
 EXTRA_OECONF += "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', '--with-systemd', '', d)}"
