@@ -17,11 +17,11 @@ PACKAGECONFIG_mdm9607 = "loc-automotive "
 
 PACKAGECONFIG[loc-automotive] = "--with-auto_feature"
 
-CFLAGS_append_sdxpoorwills = " -DUSE_ANDROID_LOGGING "
-CPPFLAGS_append_sdxpoorwills = " -DUSE_ANDROID_LOGGING "
-LDFLAGS_append_sdxpoorwills = " -llog "
+CFLAGS:append:sdxpoorwills = " -DUSE_ANDROID_LOGGING "
+CPPFLAGS:append:sdxpoorwills = " -DUSE_ANDROID_LOGGING "
+LDFLAGS:append:sdxpoorwills = " -llog "
 
-CFLAGS_append_mdm9607 = " -DUSE_ANDROID_LOGGING "
-CPPFLAGS_append_mdm9607 = " -DUSE_ANDROID_LOGGING "
-LDFLAGS_append_mdm9607 = " -llog "
+CFLAGS:append:mdm9607 = " -DUSE_ANDROID_LOGGING "
+CPPFLAGS:append:mdm9607 = " -DUSE_ANDROID_LOGGING "
+LDFLAGS:append:mdm9607 = " -llog "
 

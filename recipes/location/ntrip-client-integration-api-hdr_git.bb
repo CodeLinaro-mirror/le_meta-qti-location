@@ -8,7 +8,7 @@ PR = "r1"
 FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://qcom-opensource/location/ntrip-client-integration-api/"
 S = "${WORKDIR}/qcom-opensource/location/ntrip-client-integration-api"
-FILES_${PN} += "/usr/*"
+FILES:${PN} += "/usr/*"
 PACKAGES = "${PN}"
 
 do_configure[noexec] = "1"

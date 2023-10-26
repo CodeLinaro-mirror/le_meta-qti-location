@@ -19,4 +19,4 @@ CPPFLAGS += "-I${WORKSPACE}/base/include"
 
 SOLIBS = ".so*"
 FILES_SOLIBSDEV = ""
-INSANE_SKIP_${PN} = "dev-so"
+INSANE_SKIP:${PN} = "dev-so"
