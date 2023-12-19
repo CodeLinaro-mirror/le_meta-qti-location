@@ -38,3 +38,7 @@ LDFLAGS:append = "${@loc_target_in_list('mdm9650', '', '', ' -llog ', d)}"
 # APQ targets having no modem
 CFLAGS:append = "${@cflags_modem_disabled_target(d)} "
 CPPFLAGS:append = "${@cflags_modem_disabled_target(d)} "
+
+# NHz enabled targets
+CFLAGS:append:qcs6490 = " -DFEATURE_NHZ_ENABLED "
+CPPFLAGS:append:qcs6490 = " -DFEATURE_NHZ_ENABLED "
