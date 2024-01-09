@@ -14,7 +14,7 @@ define Package/gnsspps
   SECTION:=QTI
   CATEGORY:=QTI-PACKAGES
   TITLE:=Location GNSS PPS library
-  DEPENDS:= +gps-utils
+  DEPENDS:= +qcom-gps-utils
 endef
 
 define Package/gnsspps/Description

@@ -36,4 +36,3 @@ do_install:append() {
     ## Ownership to gps:gps for gps.conf
     chown gps:gps ${D}${sysconfdir}/gps.conf
 }
-

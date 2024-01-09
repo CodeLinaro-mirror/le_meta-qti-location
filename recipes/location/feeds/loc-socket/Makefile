@@ -14,7 +14,7 @@ define Package/loc-socket
   SECTION:=QTI
   CATEGORY:=QTI-PACKAGES
   TITLE:=Location Socket library
-  DEPENDS:= +glib2 +libcutils +loc-pla-hdr +gps-utils
+  DEPENDS:= +glib2 +libcutils +loc-pla-hdr +qcom-gps-utils
 endef
 
 define Package/loc-socket/Description
