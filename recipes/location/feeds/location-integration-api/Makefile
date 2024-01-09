@@ -14,7 +14,7 @@ define Package/location-integration-api
   SECTION:=QTI
   CATEGORY:=QTI-PACKAGES
   TITLE:=Location Integration Api
-  DEPENDS:= +glib2 +libcutils +loc-pla-hdr +gps-utils +location-api-msg-proto +location-client-api-hdr
+  DEPENDS:= +glib2 +libcutils +loc-pla-hdr +qcom-gps-utils +location-api-msg-proto +location-client-api-hdr
 endef
 
 define Package/location-integration-api/Description

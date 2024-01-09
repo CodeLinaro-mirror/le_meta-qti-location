@@ -10,4 +10,4 @@ PACKAGE_ARCH ?= "${MACHINE_ARCH}"
 SRC_URI = "file://qcom-opensource/location/ntrip-client-integration-api/"
 S = "${WORKDIR}/qcom-opensource/location/ntrip-client-integration-api"
 
-DEPENDS = "gps-utils ntrip-client-integration-api-hdr"
+DEPENDS = "qcom-gps-utils ntrip-client-integration-api-hdr"

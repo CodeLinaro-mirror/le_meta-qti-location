@@ -9,7 +9,7 @@ FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://qcom-opensource/location/utils/loc_socket/"
 S = "${WORKDIR}/qcom-opensource/location/utils/loc_socket"
 
-DEPENDS = "virtual/kernel glib-2.0 loc-pla-hdr libcutils gps-utils"
+DEPENDS = "virtual/kernel glib-2.0 loc-pla-hdr libcutils qcom-gps-utils"
 
 ## Both VMs and EAPs will be treated in similar way
 PACKAGECONFIG[loc-vm] = "--with-external_ap"

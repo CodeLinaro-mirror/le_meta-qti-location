@@ -14,7 +14,7 @@ define Package/location-api-msg-proto
   SECTION:=QTI
   CATEGORY:=QTI-PACKAGES
   TITLE:=Loc Api Msg Protobuf Lib
-  DEPENDS:= +glib2 +protobuf +loc-pla-hdr +gps-utils
+  DEPENDS:= +glib2 +protobuf +loc-pla-hdr +qcom-gps-utils
 endef
 
 PKG_BUILD_DEPENDS:= protobuf/host

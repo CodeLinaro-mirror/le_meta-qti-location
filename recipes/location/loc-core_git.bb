@@ -14,7 +14,7 @@ PACKAGECONFIG[loc-automotive] = "--with-auto_feature"
 ## Both VMs and EAPs will be treated in similar way
 PACKAGECONFIG[loc-vm] = "--with-external_ap"
 
-DEPENDS = "gps-utils"
+DEPENDS = "qcom-gps-utils"
 
 PACKAGECONFIG:append:sa525m = " ptp"
 PACKAGECONFIG[ptp] = "--enable-ptp=yes, --enable-ptp=no, open-avb"

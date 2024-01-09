@@ -9,7 +9,7 @@ FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://qcom-opensource/location/location_hal_daemon/"
 S = "${WORKDIR}/qcom-opensource/location/location_hal_daemon"
 
-DEPENDS = "loc-pla-hdr loc-hal gps-utils location-api-iface location-api location-api-msg-proto"
+DEPENDS = "loc-pla-hdr loc-hal qcom-gps-utils location-api-iface location-api location-api-msg-proto"
 RDEPENDS:${PN} = "loc-hal"
 
 PACKAGECONFIG[loc-automotive] = "--with-auto_feature"

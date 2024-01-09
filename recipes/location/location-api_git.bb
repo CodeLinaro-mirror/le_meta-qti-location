@@ -9,7 +9,7 @@ FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://hardware/qcom/gps/location/"
 S = "${WORKDIR}/hardware/qcom/gps/location"
 
-DEPENDS = "gps-utils"
+DEPENDS = "qcom-gps-utils"
 
 ## Both VMs and EAPs will be treated in similar way
 PACKAGECONFIG[loc-vm] = "--with-external_ap"

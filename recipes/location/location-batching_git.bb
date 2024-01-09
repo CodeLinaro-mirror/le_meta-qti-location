@@ -9,7 +9,7 @@ FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://hardware/qcom/gps/batching/"
 S = "${WORKDIR}/hardware/qcom/gps/batching"
 
-DEPENDS = "liblog gps-utils loc-core"
+DEPENDS = "liblog qcom-gps-utils loc-core"
 EXTRA_OECONF = "--with-core-includes=${WORKSPACE}/system/core/include \
                 --with-locpla-includes=${STAGING_INCDIR}/loc-pla \
                 --with-glib"
