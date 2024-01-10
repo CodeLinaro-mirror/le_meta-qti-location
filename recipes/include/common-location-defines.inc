@@ -39,6 +39,10 @@ LDFLAGS:append = "${@loc_target_in_list('mdm9650', '', '', ' -llog ', d)}"
 CFLAGS:append = "${@cflags_modem_disabled_target(d)} "
 CPPFLAGS:append = "${@cflags_modem_disabled_target(d)} "
 
+#Ubuntu Core SIs
+CFLAGS:append = "${@loc_target_in_list('qcs6490', '', ' -DUBUNTU_BASE ', '  ', d)}"
+CPPFLAGS:append = "${@loc_target_in_list('qcs6490', '', ' -DUBUNTU_BASE ', '  ', d)}"
+
 # NHz enabled targets
 CFLAGS:append:qcs6490 = " -DFEATURE_NHZ_ENABLED "
 CPPFLAGS:append:qcs6490 = " -DFEATURE_NHZ_ENABLED "
