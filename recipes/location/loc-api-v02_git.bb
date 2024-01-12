@@ -12,6 +12,11 @@ S = "${WORKDIR}/qcom-opensource/location/loc_api/loc_api_v02"
 
 DEPENDS = "loc-core qmi-framework"
 
+PACKAGECONFIG:append:sa525m = " ptp"
+PACKAGECONFIG[ptp] = "--enable-ptp=yes, --enable-ptp=no, open-avb"
+
+RDEPENDS_${PN} = "${@oe.utils.conditional('BASEMACHINE', 'sa525m', 'open-avb', '', d)}"
+
 CPPFLAGS += "-I${WORKSPACE}/base/include"
 
 SOLIBS = ".so*"
