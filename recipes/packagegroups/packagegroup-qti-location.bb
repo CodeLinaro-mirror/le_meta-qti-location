@@ -1,10 +1,6 @@
 SUMMARY = "QTI package group for Location modules"
 LICENSE = "BSD-3-Clause"
 
-AUTOMOTIVE:TARGET ?= "False"
-AUTOMOTIVE:TARGET:sa525m = "True"
-
-
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 inherit packagegroup
@@ -21,5 +17,5 @@ RDEPENDS:${PN} += "\
     loc-socket \
     location-client-api-testapp \
     location-integration-api \
-    ${@oe.utils.conditional('AUTOMOTIVE_TARGET', 'True', 'loc-idl-service', '', d)} \
+    ${@bb.utils.contains('MACHINE_FEATURES', 'qti-telaf', 'loc-idl-service', '', d)} \
     "
