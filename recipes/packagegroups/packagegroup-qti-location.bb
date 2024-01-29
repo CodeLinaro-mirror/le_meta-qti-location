@@ -17,5 +17,5 @@ RDEPENDS:${PN} += "\
     loc-socket \
     location-client-api-testapp \
     location-integration-api \
-    ${@bb.utils.contains('MACHINE_FEATURES', 'qti-telaf', 'loc-idl-service', '', d)} \
+    ${@bb.utils.contains('MACHINE_FEATURES', 'qti-nad-telaf', 'loc-idl-service', '', d)} \
     "
