@@ -10,3 +10,5 @@ SRC_DIR = "${WORKSPACE}/qcom-opensource/location/client_api_testapp/"
 S = "${WORKDIR}/qcom-opensource/location/client_api_testapp"
 
 DEPENDS = "location-client-api location-integration-api gps-utils"
+
+PACKAGECONFIG:remove = "loc-automotive"

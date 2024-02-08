@@ -11,6 +11,8 @@ S = "${WORKDIR}/qcom-opensource/location/integration_api"
 
 DEPENDS = "glib-2.0 loc-pla-hdr libcutils gps-utils location-api-msg-proto location-client-api-hdr"
 
+PACKAGECONFIG:remove = "loc-automotive"
+
 SOLIBS=".so"
 FILES_SOLIBSDEV=""
 FILES:${PN} = "${libdir}/*"

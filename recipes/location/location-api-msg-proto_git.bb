@@ -10,6 +10,8 @@ S = "${WORKDIR}/qcom-opensource/location/location_api_msg_proto"
 
 DEPENDS = "glib-2.0 protobuf protobuf-native loc-pla-hdr gps-utils"
 
+PACKAGECONFIG:remove = "loc-automotive"
+
 FILES:${PN} += "${libdir}/*"
 
 do_compile:prepend () {

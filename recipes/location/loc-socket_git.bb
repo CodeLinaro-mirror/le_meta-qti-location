@@ -11,6 +11,8 @@ S = "${WORKDIR}/qcom-opensource/location/utils/loc_socket"
 
 DEPENDS = "virtual/kernel glib-2.0 loc-pla-hdr libcutils gps-utils"
 
+PACKAGECONFIG:remove = "loc-automotive"
+
 # additional configuration in loc-socket_git.bbappend
 
 FILES:${PN} += "${libdir}/*"
