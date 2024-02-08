@@ -14,6 +14,8 @@ DEPENDS = "virtual/kernel glib-2.0 loc-pla-hdr libcutils qcom-gps-utils"
 ## Both VMs and EAPs will be treated in similar way
 PACKAGECONFIG[loc-vm] = "--with-external_ap"
 
+PACKAGECONFIG:remove = "loc-automotive"
+
 # additional configuration in loc-socket_git.bbappend
 
 FILES:${PN} += "${libdir}/*"
