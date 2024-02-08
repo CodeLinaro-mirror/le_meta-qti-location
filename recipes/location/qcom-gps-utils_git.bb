@@ -11,6 +11,7 @@ S = "${WORKDIR}/hardware/qcom/gps/utils"
 
 ## Both VMs and EAPs will be treated in similar way
 PACKAGECONFIG[loc-vm] = "--with-external_ap"
+PACKAGECONFIG:remove = "loc-automotive"
 
 DEPENDS = "glib-2.0 libcutils loc-pla-hdr location-api-iface"
 SOLIBS = ".so*"

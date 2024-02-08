@@ -19,3 +19,6 @@ FILES:${PN} += "/usr/include/*"
 SOLIBS = ".so*"
 FILES_SOLIBSDEV = ""
 INSANE_SKIP:${PN} = "dev-deps"
+
+PACKAGECONFIG:remove = "loc-automotive"
+
