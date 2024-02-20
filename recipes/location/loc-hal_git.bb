@@ -10,6 +10,7 @@ SRC_URI = "file://hardware/qcom/gps/"
 SRC_DIR = "${WORKSPACE}/hardware/qcom/gps/"
 S = "${WORKDIR}/hardware/qcom/gps"
 
+PACKAGECONFIG[loc-automotive] = "--with-auto_feature"
 PACKAGECONFIG:append = "${@bb.utils.filter('DISTRO_FEATURES', 'qti-telux', d)}"
 PACKAGECONFIG[qti-telux] = "--with-telsdk,--without-telsdk"
 DEPENDS = "loc-core libxml2"
