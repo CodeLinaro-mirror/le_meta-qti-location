@@ -10,6 +10,11 @@ SRC_URI = "file://hardware/qcom/gps/core/"
 SRC_DIR = "${WORKSPACE}/hardware/qcom/gps/core/"
 S = "${WORKDIR}/hardware/qcom/gps/core"
 
+PACKAGECONFIG[loc-automotive] = "--with-auto_feature"
+
+## Both VMs and EAPs will be treated in similar way
+PACKAGECONFIG[loc-vm] = "--with-external_ap"
+
 DEPENDS = "gps-utils"
 
 PACKAGECONFIG:append:sa525m = " ptp"

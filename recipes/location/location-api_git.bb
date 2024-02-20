@@ -11,6 +11,9 @@ S = "${WORKDIR}/hardware/qcom/gps/location"
 
 DEPENDS = "gps-utils"
 
+## Both VMs and EAPs will be treated in similar way
+PACKAGECONFIG[loc-vm] = "--with-external_ap"
+
 SOLIBS = ".so*"
 FILES_SOLIBSDEV = ""
 INSANE_SKIP:${PN} = "dev-so"
