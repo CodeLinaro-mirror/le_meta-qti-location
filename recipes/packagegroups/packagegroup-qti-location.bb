@@ -1,9 +1,6 @@
 SUMMARY = "QTI package group for Location modules"
 LICENSE = "BSD-3-Clause"
 
-AUTOMOTIVE:TARGET ?= "False"
-AUTOMOTIVE:TARGET:sa525m = "True"
-
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
