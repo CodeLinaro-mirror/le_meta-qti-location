@@ -3,6 +3,7 @@ include $(TOPDIR)/rules.mk
 PKG_NAME:=location-hal-daemon
 PKG_VERSION:=1.0
 PKG_RELEASE:=1
+PKG_LICENSE:=BSD-3-Clause
 PKG_FIXUP:=autoreconf
 
 LOCAL_SRC ?= $(TOPDIR)/src/qcom-opensource/location/location_hal_daemon/
