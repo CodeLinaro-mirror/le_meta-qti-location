@@ -10,3 +10,6 @@ SRC_DIR = "${WORKSPACE}/qcom-opensource/location/client_api_testapp/"
 S = "${WORKDIR}/qcom-opensource/location/client_api_testapp"
 
 DEPENDS = "location-client-api location-integration-api gps-utils"
+
+## Both VMs and EAPs will be treated in similar way
+PACKAGECONFIG[loc-vm] = "--with-external_ap"
