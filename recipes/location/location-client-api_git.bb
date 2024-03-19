@@ -11,6 +11,9 @@ S = "${WORKDIR}/qcom-opensource/location/client_api"
 
 DEPENDS = "glib-2.0 loc-pla-hdr libcutils gps-utils location-api-msg-proto"
 
+## Both VMs and EAPs will be treated in similar way
+PACKAGECONFIG[loc-vm] = "--with-external_ap"
+
 SOLIBS=".so"
 FILES_SOLIBSDEV=""
 FILES:${PN} = "${libdir}/*"
