@@ -1,7 +1,6 @@
 SUMMARY = "QTI package group for Location modules"
 LICENSE = "BSD-3-Clause"
 
-
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 inherit packagegroup
