@@ -3,6 +3,7 @@ include $(TOPDIR)/rules.mk
 PKG_NAME:=location-client-api-hdr
 PKG_VERSION:=1.0
 PKG_RELEASE:=1
+PKG_LICENSE:=BSD-3-Clause
 
 LOCAL_SRC ?= $(TOPDIR)/src/qcom-opensource/location/client_api/inc/
 
