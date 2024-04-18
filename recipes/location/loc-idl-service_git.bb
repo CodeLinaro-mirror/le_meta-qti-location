@@ -5,6 +5,8 @@ LIC_FILES_CHKSUM += "file://${COREBASE}/meta-qti-bsp/files/common-licenses/\
 BSD-3-Clause-Clear;md5=3771d4920bd6cdb8cbdf1e8344489ee0"
 LIC_FILES_CHKSUM += "file://${COMMON_LICENSE_DIR}/MPL-2.0;md5=815ca599c9df247a0c7f619bab123dad"
 
+PACKAGECONFIG:sa525m:append = "loc-automotive "
+
 # qcommon bbclass
 # Common bitbake recipe information for QTI meta layers.
 # Below are common values, statements and functions.
@@ -30,7 +32,10 @@ CPPFLAGS += "${@cflags_modem_disabled_target(d)} "
 
 DEPENDS = " loc-hal location-api open-avb"
 DEPENDS += "location-client-api location-integration-api common-api-c++ \
-           vsomeip common-api-c++-someip"
+           vsomeip common-api-c++-someip "
+
+DEPENDS += "${@bb.utils.contains('PACKAGECONFIG', 'loc-automotive', ' powermanager-lib ', '', d)}"
+CPPFLAGS += "${@bb.utils.contains('PACKAGECONFIG', 'loc-automotive', ' -DPOWER_DAEMON_MGR_ENABLED ', ' ', d)}"
 
 RDEPENDS:${PN} = "open-avb"
 
