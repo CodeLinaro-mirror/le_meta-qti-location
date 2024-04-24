@@ -13,3 +13,9 @@ DEPENDS = "location-client-api location-integration-api gps-utils"
 
 ## Both VMs and EAPs will be treated in similar way
 PACKAGECONFIG[loc-vm] = "--with-external_ap"
+
+FILES:${PN} += "${libdir}/*"
+FILES:${PN} += "/usr/include/*"
+SOLIBS = ".so*"
+FILES_SOLIBSDEV = ""
+INSANE_SKIP:${PN} = "dev-deps"
