@@ -1,13 +1,12 @@
 inherit autotools-brokensep pkgconfig useradd
-require ${COREBASE}/meta-qti-location/recipes/include/common-location-defines.inc
-require ${COREBASE}/meta-qti-location/recipes/include/location-license-bsd3-clause.inc
+require include/common-location-defines.inc
+require include/location-license-bsd3-clause.inc
 
 DESCRIPTION = "GPS Utils"
 PR = "r1"
 
 FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://hardware/qcom/gps/utils/"
-SRC_DIR = "${WORKSPACE}/hardware/qcom/gps/utils/"
 S = "${WORKDIR}/hardware/qcom/gps/utils"
 
 ## Both VMs and EAPs will be treated in similar way
@@ -37,3 +36,4 @@ do_install:append() {
     ## Ownership to gps:gps for gps.conf
     chown gps:gps ${D}${sysconfdir}/gps.conf
 }
+

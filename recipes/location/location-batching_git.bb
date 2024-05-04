@@ -1,6 +1,6 @@
-inherit autotools-brokensep pkgconfig
-require ${COREBASE}/meta-qti-location/recipes/include/common-location-defines.inc
-require ${COREBASE}/meta-qti-location/recipes/include/location-license-bsd3-clause.inc
+inherit autotools-brokensep pkgconfig useradd
+require include/common-location-defines.inc
+require include/location-license-bsd3-clause.inc
 
 DESCRIPTION = "GPS FLP Batching"
 PR = "r1"
@@ -18,3 +18,13 @@ FILES:${PN} = "${libdir}/* ${includedir}/* ${sysconfdir}"
 SOLIBS = ".so*"
 FILES_SOLIBSDEV = ""
 INSANE_SKIP:${PN} = "dev-so"
+
+#batching.conf path
+SRC_URI += "file://hardware/qcom/gps/etc/"
+
+do_install:append() {
+    #Install default batching.conf file
+    install -m 0644 -D ${WORKDIR}/hardware/qcom/gps/etc/batching.conf ${D}${sysconfdir}/batching.conf
+    # batching.conf ownership with gps:gps
+    chown gps:gps ${D}${sysconfdir}/batching.conf
+}

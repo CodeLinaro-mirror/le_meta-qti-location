@@ -1,12 +1,12 @@
 inherit autotools update-rc.d pkgconfig systemd
-require ${COREBASE}/meta-qti-location/recipes/include/common-location-defines.inc
-require ${COREBASE}/meta-qti-location/recipes/include/location-license-bsd3-clause.inc
+require include/common-location-defines.inc
+require include/location-license-bsd3-clause.inc
 
 DESCRIPTION = "location hal daemon service"
 PR = "r1"
 
 FILESPATH =+ "${WORKSPACE}:"
-SRC_DIR = "${WORKSPACE}/qcom-opensource/location/location_hal_daemon/"
+SRC_URI = "file://qcom-opensource/location/location_hal_daemon/"
 S = "${WORKDIR}/qcom-opensource/location/location_hal_daemon"
 
 DEPENDS = "loc-pla-hdr loc-hal gps-utils location-api-iface location-api location-api-msg-proto"
