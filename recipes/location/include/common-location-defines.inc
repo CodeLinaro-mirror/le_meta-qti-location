@@ -6,8 +6,6 @@ inherit locationcommon
 # Below are common values, statements and functions.
 #
 FILESPATH        =+ "${WORKSPACE}:"
-WORKSPACE_CHECK = "${@d.getVar('WORKSPACE') or ""}"
-SRC_URI          = "file://${@d.getVar('SRC_DIR', True).replace('${WORKSPACE_CHECK}/', '')}"
 PACKAGE_ARCH    ?= "${MACHINE_ARCH}"
 
 EXTRA_OECONF = "--with-locpla-includes=${STAGING_INCDIR}/loc-pla \
