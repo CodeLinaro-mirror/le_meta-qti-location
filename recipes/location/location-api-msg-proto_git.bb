@@ -10,6 +10,9 @@ S = "${WORKDIR}/qcom-opensource/location/location_api_msg_proto"
 
 DEPENDS = "glib-2.0 protobuf protobuf-native loc-pla-hdr gps-utils"
 
+## Both VMs and EAPs will be treated in similar way
+PACKAGECONFIG[loc-vm] = "--with-external_ap"
+
 FILES:${PN} += "${libdir}/*"
 
 do_compile:prepend () {
