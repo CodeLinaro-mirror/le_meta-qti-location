@@ -23,4 +23,4 @@ RDEPENDS_${PN} = "${@oe.utils.conditional('BASEMACHINE', 'sa525m', 'open-avb', '
 
 SOLIBS = ".so*"
 FILES_SOLIBSDEV = ""
-INSANE_SKIP:${PN} = "dev-so"
+INSANE_SKIP:${PN} = "dev-so file-rdeps"
