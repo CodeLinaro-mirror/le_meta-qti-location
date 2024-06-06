@@ -1,5 +1,5 @@
 inherit autotools-brokensep pkgconfig
-#require ${COREBASE}/meta-qti-location/recipes/include/common-location-defines.inc
+#require include/common-location-defines.inc
 
 DESCRIPTION = "Nlp api hdr"
 PR = "r1"
@@ -9,7 +9,6 @@ ${LICENSE};md5=550794465ba0ec5312d6919e203a55f9"
 
 FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://qcom-opensource/location/nlp_api/inc/"
-SRC_DIR = "${WORKSPACE}/qcom-opensource/location/nlp_api/inc/"
 S = "${WORKDIR}/qcom-opensource/location/nlp_api/inc"
 
 do_configure() {

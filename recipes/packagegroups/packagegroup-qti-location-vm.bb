@@ -10,7 +10,7 @@ PACKAGES = "\
     "
 
 RDEPENDS:${PN} += "\
-    gps-utils \
+    qcom-gps-utils \
     loc-socket \
     location-client-api \
     location-integration-api \
