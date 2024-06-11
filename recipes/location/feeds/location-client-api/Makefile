@@ -14,7 +14,7 @@ define Package/location-client-api
   SECTION:=QTI
   CATEGORY:=QTI-PACKAGES
   TITLE:=Location Client Api
-  DEPENDS:= +glib2 +libcutils +loc-pla-hdr +gps-utils +location-api-msg-proto
+  DEPENDS:= +glib2 +libcutils +loc-pla-hdr +qcom-gps-utils +location-api-msg-proto
 endef
 
 define Package/location-client-api/Description

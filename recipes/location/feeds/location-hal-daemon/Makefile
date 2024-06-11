@@ -14,7 +14,7 @@ define Package/location-hal-daemon
   SECTION:=QTI
   CATEGORY:=QTI-PACKAGES
   TITLE:=Location Hal Daemon
-  DEPENDS:= +glib2 +loc-pla-hdr +gps-utils +loc-hal +location-api-iface +location-api +location-api-msg-proto
+  DEPENDS:= +glib2 +loc-pla-hdr +qcom-gps-utils +loc-hal +location-api-iface +location-api +location-api-msg-proto
 endef
 
 CONFIGURE_ARGS += --with-systemd

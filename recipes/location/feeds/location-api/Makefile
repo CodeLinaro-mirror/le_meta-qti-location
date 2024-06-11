@@ -14,7 +14,7 @@ define Package/location-api
   SECTION:=QTI
   CATEGORY:=QTI-PACKAGES
   TITLE:=Location Api Inteface
-  DEPENDS:= +gps-utils
+  DEPENDS:= +qcom-gps-utils
 endef
 
 define Package/location-api/Description

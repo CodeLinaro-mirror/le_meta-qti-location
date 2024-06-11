@@ -12,18 +12,14 @@ PACKAGECONFIG:sa525m:append = "loc-automotive "
 # Below are common values, statements and functions.
 #
 
-FILESPATH        =+ "${WORKSPACE}:"
-WORKSPACE_CHECK = "${@d.getVar('WORKSPACE') or ""}"
-SRC_URI          = "file://${@d.getVar('SRC_DIR', True).replace('${WORKSPACE_CHECK}/', '')}"
-PACKAGE_ARCH    ?= "${MACHINE_ARCH}"
-
 DESCRIPTION = "Location IDL service"
 PR = "r1"
 
+PACKAGE_ARCH    ?= "${MACHINE_ARCH}"
 FILESPATH =+ "${WORKSPACE}:"
-SRC_DIR = "${WORKSPACE}/qcom-opensource/location/loc-fidl/"
 
-S = "${WORKDIR}/qcom-opensource/location/loc-fidl/"
+SRC_URI = "file://qcom-opensource/location/loc-fidl/"
+S = "${WORKDIR}/qcom-opensource/location/loc-fidl"
 
 CPPFLAGS += " -DUSE_ANDROID_LOGGING "
 LDFLAGS += " -llog "
