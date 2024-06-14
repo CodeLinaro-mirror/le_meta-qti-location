@@ -14,7 +14,7 @@ define Package/loc-core
   SECTION:=QTI
   CATEGORY:=QTI-PACKAGES
   TITLE:=Location Core
-  DEPENDS:= +gps-utils
+  DEPENDS:= +qcom-gps-utils
 endef
 
 define Package/loc-core/Description

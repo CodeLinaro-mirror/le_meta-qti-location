@@ -1,13 +1,12 @@
 inherit autotools-brokensep pkgconfig locationcommon
-require ${COREBASE}/meta-qti-location/recipes/include/common-location-defines.inc
-require ${COREBASE}/meta-qti-location/recipes/include/location-license-bsd3-clause.inc
+require include/common-location-defines.inc
+require include/location-license-bsd3-clause.inc
 
 DESCRIPTION = "GPS Loc Platform Library Abstraction"
 PR = "r1"
 
 FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://hardware/qcom/gps/pla/oe/"
-SRC_DIR = "${WORKSPACE}/hardware/qcom/gps/pla/oe/"
 S = "${WORKDIR}/hardware/qcom/gps/pla/oe"
 
 DEPENDS += "libcutils liblog"
