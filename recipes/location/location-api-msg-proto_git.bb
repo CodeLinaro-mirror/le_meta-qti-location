@@ -13,6 +13,8 @@ DEPENDS = "glib-2.0 protobuf protobuf-native loc-pla-hdr qcom-gps-utils"
 ## Both VMs and EAPs will be treated in similar way
 PACKAGECONFIG[loc-vm] = "--with-external_ap"
 
+PACKAGECONFIG:remove = "loc-automotive"
+
 FILES:${PN} += "${libdir}/*"
 
 do_compile:prepend () {

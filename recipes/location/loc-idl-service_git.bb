@@ -26,7 +26,7 @@ LDFLAGS += " -llog "
 CFLAGS += "${@cflags_modem_disabled_target(d)} "
 CPPFLAGS += "${@cflags_modem_disabled_target(d)} "
 
-DEPENDS = " loc-hal location-api open-avb"
+DEPENDS = " loc-hal location-api open-avb loc-diag-iface-hdr "
 DEPENDS += "location-client-api location-integration-api common-api-c++ \
            vsomeip common-api-c++-someip "
 
