@@ -14,7 +14,7 @@ define Package/location-batching
   SECTION:=QTI
   CATEGORY:=QTI-PACKAGES
   TITLE:=GPS FLP Batching library
-  DEPENDS:= +lbs-core-hdr +loc-api-v02 +gps-utils +loc-base-util
+  DEPENDS:= +lbs-core-hdr +loc-api-v02 +qcom-gps-utils +loc-base-util
 endef
 
 define Package/location-batching/Description
