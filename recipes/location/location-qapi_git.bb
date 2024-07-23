@@ -1,6 +1,6 @@
 inherit autotools-brokensep pkgconfig
-require ${COREBASE}/meta-qti-location/recipes/include/common-location-defines.inc
-require ${COREBASE}/meta-qti-location/recipes/include/location-license-bsd3-clause.inc
+require include/common-location-defines.inc
+require include/location-license-bsd3-clause.inc
 
 DESCRIPTION = "location qapi library"
 PR = "r1"
@@ -17,5 +17,5 @@ FILES_SOLIBSDEV = ""
 INSANE_SKIP:${PN} = "dev-so"
 
 do_install:append() {
-    install -m 0644 -D ${S}/etc/qapi.conf ${D}${sysconfdir}/qapi.conf
+    install -m 0444 -D ${S}/etc/qapi.conf ${D}${sysconfdir}/qapi.conf
 }
