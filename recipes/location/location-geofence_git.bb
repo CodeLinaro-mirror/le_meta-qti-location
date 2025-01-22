@@ -13,7 +13,7 @@ DEPENDS = "lbs-core"
 
 CXXINC  = "-I${STAGING_INCDIR}/c++"
 CXXINC += "-I${STAGING_INCDIR}/c++/${TARGET_SYS}"
-CXXFLAGS ="${CXXINC}"
+CXXFLAGS ="${CXXINC} -O2"
 
 EXTRA_OECONF = "--with-glib"
 
