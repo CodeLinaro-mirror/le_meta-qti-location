@@ -16,29 +16,29 @@ define Package/loc-socket-hdr
 endef
 
 define Package/loc-socket-hdr/Description
-    Location Socket Header library
+	Location Socket Header library
 endef
 
 define Build/Prepare
-    $(MKDIR) $(PKG_BUILD_DIR)/
-    $(CP) $(LOCAL_SRC)/* $(PKG_BUILD_DIR)/
+	$(MKDIR) $(PKG_BUILD_DIR)/
+	$(CP) $(LOCAL_SRC)/* $(PKG_BUILD_DIR)/
 endef
 
 define Build/Configure
-    @true
+	@true
 endef
 
 define Build/Compile
-    @true
+	@true
 endef
 
 define Build/InstallDev
-    $(INSTALL_DIR) $(1)$(USR_INC_DIR)
-    $(CP) $(PKG_BUILD_DIR)/*.h $(1)$(USR_INC_DIR)
+	$(INSTALL_DIR) $(1)$(USR_INC_DIR)
+	$(CP) $(PKG_BUILD_DIR)/*.h $(1)$(USR_INC_DIR)
 endef
 
 define Package/loc-socket-hdr/install
-    @true
+	@true
 endef
 
 $(eval $(call BuildPackage,loc-socket-hdr))
