@@ -26,7 +26,7 @@ endef
 define Build/Prepare
 	$(MKDIR) $(PKG_BUILD_DIR)/
 	$(CP) $(LOCAL_SRC)/* $(PKG_BUILD_DIR)/
-	/bin/sh $(PKG_BUILD_DIR)/protobuf_gen.sh $(STAGING_DIR_HOSTPKG)
+	/bin/bash $(PKG_BUILD_DIR)/protobuf_gen.sh $(STAGING_DIR_HOSTPKG)
 endef
 
 define Build/InstallDev
