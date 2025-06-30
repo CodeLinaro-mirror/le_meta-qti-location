@@ -22,6 +22,9 @@ PACKAGECONFIG:sa525m = "loc-automotive "
 PACKAGECONFIG:sa510m = "loc-automotive "
 PACKAGECONFIG:sa535m = "loc-automotive loc-sa535m "
 
+# packageconfig for targets where WPA supplicant is used
+PACKAGECONFIG:sdmsteppe = "loc-iot "
+
 ##Entries for VMs
 PACKAGECONFIG:append = "${@bb.utils.contains('MACHINE_FEATURES', 'qti-vm-guest', 'loc-vm', '', d)}"
 
