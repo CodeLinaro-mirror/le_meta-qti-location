@@ -14,6 +14,7 @@ PACKAGECONFIG ??= "${@oe.utils.conditional('DISTRO', 'auto', 'loc-automotive', '
 ## PDK based LE Auto targets
 PACKAGECONFIG_sa415m  = "loc-automotive loc-bootkpi "
 PACKAGECONFIG_mdm9607 = "loc-automotive "
+PACKAGECONFIG_mdm9650 = "loc-automotive "
 
 PACKAGECONFIG[loc-automotive] = "--with-auto_feature"
 
@@ -24,4 +25,8 @@ LDFLAGS_append_sdxpoorwills = " -llog "
 CFLAGS_append_mdm9607 = " -DUSE_ANDROID_LOGGING "
 CPPFLAGS_append_mdm9607 = " -DUSE_ANDROID_LOGGING "
 LDFLAGS_append_mdm9607 = " -llog "
+
+CFLAGS_append_mdm9650 = " -DUSE_ANDROID_LOGGING "
+CPPFLAGS_append_mdm9650 = " -DUSE_ANDROID_LOGGING "
+LDFLAGS_append_mdm9650 = " -llog "
 

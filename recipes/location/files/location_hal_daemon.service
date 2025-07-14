@@ -29,7 +29,7 @@
 Description=location remote service launcher
 SourcePath=/usr/bin/location_hal_daemon
 Requires=data.mount
-After=data.mount logd.service
+After=data.mount
 
 [Service]
 User=gps
