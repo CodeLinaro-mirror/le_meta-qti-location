@@ -46,6 +46,10 @@ do_install_append () {
             sed -i 's/SupplementaryGroups=diag /SupplementaryGroups=diag powermgr /' \
                     ${D}${sysconfdir}/systemd/system/location_hal_daemon.service
         fi
+        if ${@oe.utils.conditional('BASEMACHINE', 'mdm9650', 'true', 'false', d)}; then
+            sed -i 's/SupplementaryGroups=diag /SupplementaryGroups=diag powermgr /' \
+                    ${D}${sysconfdir}/systemd/system/location_hal_daemon.service
+        fi
         if ${@oe.utils.conditional('BASEMACHINE', 'sdxpoorwills', 'true', 'false', d)}; then
             sed -i 's/SupplementaryGroups=diag /SupplementaryGroups=diag powermgr vnw /' \
                     ${D}${sysconfdir}/systemd/system/location_hal_daemon.service
