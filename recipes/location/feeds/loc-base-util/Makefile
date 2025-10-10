@@ -14,7 +14,7 @@ define Package/loc-base-util
   SECTION:=QTI
   CATEGORY:=QTI-PACKAGES
   TITLE:=Location base Util
-  DEPENDS:= +liblog +glib2 +loc-pla-hdr +libopenssl +libsqlite3
+  DEPENDS:= +liblog +glib2 +loc-pla-hdr +libopenssl +libsqlite3 +qcom-gps-utils
 endef
 
 define Package/loc-base-util/Description
