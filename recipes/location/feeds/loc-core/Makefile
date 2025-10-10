@@ -32,6 +32,7 @@ define Build/InstallDev
 	$(MKDIR) $(1)$(USR_LIB_DIR)
 	$(MKDIR)  $(1)$(USR_PKGCFG_DIR)
 	$(CP) $(PKG_BUILD_DIR)/*.h $(1)$(USR_INC_DIR)
+	$(CP) $(PKG_BUILD_DIR)/data-items/*.h $(1)$(USR_INC_DIR)
 	$(CP) $(PKG_BUILD_DIR)/observer/*.h $(1)$(USR_INC_DIR)
 	$(CP) $(PKG_BUILD_DIR)/.libs/libloc_core.so* $(1)$(USR_LIB_DIR)
 	$(CP) $(PKG_BUILD_DIR)/loc-core.pc $(1)$(USR_PKGCFG_DIR)
