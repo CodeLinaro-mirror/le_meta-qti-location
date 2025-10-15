@@ -10,8 +10,8 @@ SRC_URI = "file://hardware/qcom/gps/location/"
 S = "${WORKDIR}/hardware/qcom/gps/location"
 
 PACKAGES = "${PN}"
-FILES_${PN} += "/usr/*"
-FILES_${PN} += "/usr/include/*"
+FILES:${PN} += "/usr/*"
+FILES:${PN} += "/usr/include/*"
 
 do_configure() {
 }

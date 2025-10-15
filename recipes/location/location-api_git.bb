@@ -16,4 +16,5 @@ EXTRA_OECONF = "--with-locpla-includes=${STAGING_INCDIR}/loc-pla \
 
 SOLIBS = ".so*"
 FILES_SOLIBSDEV = ""
-INSANE_SKIP_${PN} = "dev-so"
+INSANE_SKIP:${PN} = "dev-so"
+PACKAGECONFIG:remove = "loc-automotive"

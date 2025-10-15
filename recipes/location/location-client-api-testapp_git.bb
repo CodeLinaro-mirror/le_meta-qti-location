@@ -5,6 +5,8 @@ require ${COREBASE}/meta-qti-location/recipes/include/location-license-bsd3-clau
 DESCRIPTION = "location client api test application"
 PR = "r1"
 
+PACKAGECONFIG:remove = "loc-automotive"
+
 FILESPATH =+ "${WORKSPACE}:"
 SRC_DIR = "${WORKSPACE}/qcom-opensource/location/client_api_testapp/"
 S = "${WORKDIR}/qcom-opensource/location/client_api_testapp"

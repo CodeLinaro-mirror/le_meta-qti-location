@@ -14,6 +14,6 @@ EXTRA_OECONF = "--with-glib"
 
 SOLIBS=".so"
 FILES_SOLIBSDEV=""
-FILES_${PN} = "${libdir}/*"
-INSANE_SKIP_${PN} = "dev-so"
-
+FILES:${PN} = "${libdir}/*"
+INSANE_SKIP:${PN} = "dev-so"
+PACKAGECONFIG:remove = "loc-automotive"

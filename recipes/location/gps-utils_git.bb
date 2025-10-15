@@ -9,6 +9,7 @@ FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://hardware/qcom/gps/utils/"
 SRC_DIR = "${WORKSPACE}/hardware/qcom/gps/utils/"
 S = "${WORKDIR}/hardware/qcom/gps/utils"
+PACKAGECONFIG:remove = "loc-automotive"
 
 DEPENDS = "glib-2.0 libcutils loc-pla-hdr location-api-iface"
 EXTRA_OECONF = "--with-locationapi-includes=${STAGING_INCDIR}/location-api-iface \
@@ -17,4 +18,5 @@ EXTRA_OECONF = "--with-locationapi-includes=${STAGING_INCDIR}/location-api-iface
                 --with-glib"
 SOLIBS = ".so*"
 FILES_SOLIBSDEV = ""
-INSANE_SKIP_${PN} = "dev-so"
+INSANE_SKIP:${PN} = "dev-so"
+ERROR_QA:remove = "unknown-configure-option"
