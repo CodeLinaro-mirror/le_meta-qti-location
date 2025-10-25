@@ -3,8 +3,8 @@ require include/common-location-defines.inc
 LICENSE = "BSD-3-Clause & BSD-3-Clause-Clear"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/\
 BSD-3-Clause;md5=550794465ba0ec5312d6919e203a55f9"
-LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/\
-BSD-3-Clause-Clear;md5=7a434440b651f4a472ca93716d01033a"
+LIC_FILES_CHKSUM = "file://${COREBASE}/meta-qti-bsp/files/common-licenses/\
+BSD-3-Clause-Clear;md5=3771d4920bd6cdb8cbdf1e8344489ee0"
 
 DESCRIPTION = "location hal daemon service"
 PR = "r1"
