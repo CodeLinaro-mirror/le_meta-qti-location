@@ -20,7 +20,7 @@ PACKAGECONFIG:sa410m = "loc-automotive "
 PACKAGECONFIG:sa515m = "loc-automotive loc-bootkpi "
 PACKAGECONFIG:sa525m = "loc-automotive "
 PACKAGECONFIG:sa510m = "loc-automotive "
-PACKAGECONFIG:sa535m = "loc-automotive "
+PACKAGECONFIG:sa535m = "loc-automotive loc-sa535m "
 
 ##Entries for VMs
 PACKAGECONFIG:append = "${@bb.utils.contains('MACHINE_FEATURES', 'qti-vm-guest', 'loc-vm', '', d)}"
