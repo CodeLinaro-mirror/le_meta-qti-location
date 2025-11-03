@@ -1,8 +1,8 @@
 inherit cmake pkgconfig locationcommon
 
 LICENSE = "BSD-3-Clause-Clear & MPL-2.0"
-LIC_FILES_CHKSUM += "file://${COREBASE}/meta-qti-bsp/files/common-licenses/\
-BSD-3-Clause-Clear;md5=3771d4920bd6cdb8cbdf1e8344489ee0"
+LIC_FILES_CHKSUM += "file://${COREBASE}/meta/files/common-licenses/\
+BSD-3-Clause-Clear;md5=7a434440b651f4a472ca93716d01033a"
 LIC_FILES_CHKSUM += "file://${COMMON_LICENSE_DIR}/MPL-2.0;md5=815ca599c9df247a0c7f619bab123dad"
 
 PACKAGECONFIG:sa525m:append = "loc-automotive "
