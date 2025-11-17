@@ -7,6 +7,6 @@ QTILOCATION:=qcom-gps-utils location-api loc-core loc-hal loc-api-v02 location-q
 ##  QTILOCATION+=newloc-package
 ##endif
 
-ifeq ($(PRPL_VERSION),3.1)
+ifneq ($(PRPL_VERSION),)
   QTILOCATION:=
 endif
