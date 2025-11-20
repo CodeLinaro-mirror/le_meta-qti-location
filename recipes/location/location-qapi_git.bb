@@ -16,6 +16,3 @@ SOLIBS = ".so*"
 FILES_SOLIBSDEV = ""
 INSANE_SKIP:${PN} = "dev-so"
 
-do_install:append() {
-    install -m 0444 -D ${S}/etc/qapi.conf ${D}${sysconfdir}/qapi.conf
-}
