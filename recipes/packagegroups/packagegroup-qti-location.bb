@@ -5,6 +5,11 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 inherit packagegroup
 
+LOC_IDL_SERVICE_ENABLEMENT ?= "False"
+LOC_IDL_SERVICE_ENABLEMENT:sa525m = "True"
+LOC_IDL_SERVICE_ENABLEMENT:sa510m = "False"
+
+
 PACKAGES = "\
     ${@bb.utils.contains_any("MACHINE_FEATURES", "qti-location", "packagegroup-qti-location", "", d)} \
     "
@@ -17,6 +22,6 @@ RDEPENDS:${PN} += "\
     loc-socket \
     location-client-api-testapp \
     location-integration-api \
-    ${@bb.utils.contains('MACHINE_FEATURES', 'qti-nad-telaf', 'loc-idl-service', '', d)} \
+    ${@oe.utils.conditional('LOC_IDL_SERVICE_ENABLEMENT', 'True', 'loc-idl-service', '', d)} \
     loc-base-util \
     "
