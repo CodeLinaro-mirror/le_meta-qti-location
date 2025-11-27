@@ -59,6 +59,12 @@ do_install:append () {
             ln -sf /etc/systemd/system/location_hal_daemon.service \
                     ${D}/etc/systemd/system/multi-user.target.wants/location_hal_daemon.service
         fi
+
+        # Modify SupplementaryGroups only if PACKAGECONFIG includes loc-sa535m
+        if ${@bb.utils.contains('PACKAGECONFIG', 'loc-sa535m', 'true', 'false', d)}; then
+            sed -i 's/SupplementaryGroups=diag inet radio logd/SupplementaryGroups=radio logd/' \
+                ${D}${sysconfdir}/systemd/system/location_hal_daemon.service
+        fi
     else
         install -m 0755 ${S}/location_hal_initializer -D ${D}${sysconfdir}/init.d/location_hal_initializer
     fi
