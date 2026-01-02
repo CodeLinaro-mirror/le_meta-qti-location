@@ -2,7 +2,7 @@ inherit autotools-brokensep pkgconfig
 require include/common-location-defines.inc
 require include/location-license-bsd3-clause.inc
 
-DESCRIPTION = "Loc Core"
+DESCRIPTION = "Location Core Interface acts as bridge between multiple providers."
 PR = "r1"
 
 FILESPATH =+ "${WORKSPACE}:"

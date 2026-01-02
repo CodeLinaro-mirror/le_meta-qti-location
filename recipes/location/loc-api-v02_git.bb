@@ -2,7 +2,7 @@ inherit autotools-brokensep pkgconfig
 require include/common-location-defines.inc
 require include/location-license-bsd3-clause.inc
 
-DESCRIPTION = "Loc API"
+DESCRIPTION = "Loc API Interface for communication to GNSS engine through QMI_LOC Interface"
 PR = "r1"
 
 FILESPATH =+ "${WORKSPACE}:"
