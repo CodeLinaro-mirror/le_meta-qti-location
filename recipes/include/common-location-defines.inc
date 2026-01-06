@@ -19,3 +19,7 @@ CFLAGS:append_sdxpoorwills = " -DUSE_ANDROID_LOGGING"
 CPPFLAGS:append_sdxpoorwills = " -DUSE_ANDROID_LOGGING"
 LDFLAGS:append_sdxpoorwills = " -llog"
 
+CFLAGS:append:sa415m = " -DUSE_ANDROID_LOGGING"
+CPPFLAGS:append:sa415m = " -DUSE_ANDROID_LOGGING"
+LDFLAGS:append:sa415m = " -llog"
+

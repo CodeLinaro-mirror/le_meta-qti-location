@@ -54,6 +54,10 @@ do_install:append () {
             sed -i 's/SupplementaryGroups=diag /SupplementaryGroups=diag powermgr vnw /' \
                     ${D}${sysconfdir}/systemd/system/location_hal_daemon.service
         fi
+        if ${@oe.utils.conditional('BASEMACHINE', 'sa415m', 'true', 'false', d)}; then
+            sed -i 's/SupplementaryGroups=diag /SupplementaryGroups=diag powermgr /' \
+                    ${D}${sysconfdir}/systemd/system/location_hal_daemon.service
+        fi
         install -d ${D}${sysconfdir}/systemd/system/sockets.target.wants/
         ln -sf /etc/systemd/system/location_hal_daemon.service \
                           ${D}/etc/systemd/system/sockets.target.wants/location_hal_daemon.service
