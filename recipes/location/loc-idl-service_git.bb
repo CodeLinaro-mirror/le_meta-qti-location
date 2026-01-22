@@ -28,7 +28,7 @@ CPPFLAGS += "${@cflags_modem_disabled_target(d)} "
 
 DEPENDS = " loc-hal location-api open-avb loc-diag-iface-hdr "
 DEPENDS += "location-client-api location-integration-api common-api-c++ \
-           vsomeip common-api-c++-someip "
+           vsomeip common-api-c++-someip libcap"
 
 PACKAGECONFIG[loc-power] = "-DPOWER_DAEMON_MGR_ENABLED=ON,,powermanager-lib"
 RDEPENDS:${PN} = "open-avb"
