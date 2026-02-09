@@ -1,6 +1,10 @@
 inherit autotools update-rc.d pkgconfig systemd
 require include/common-location-defines.inc
-require include/location-license-bsd3-clause.inc
+LICENSE = "BSD-3-Clause & BSD-3-Clause-Clear"
+LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/\
+BSD-3-Clause;md5=550794465ba0ec5312d6919e203a55f9"
+LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/\
+BSD-3-Clause-Clear;md5=7a434440b651f4a472ca93716d01033a"
 
 DESCRIPTION = "location hal daemon service"
 PR = "r1"
@@ -23,6 +27,7 @@ INITSCRIPT_PARAMS = "start 98 2 3 4 5 . stop 2 0 1 6 ."
 SRC_URI +="file://location_hal_daemon.service"
 SRC_URI +="file://location_hal_daemon-tmpfilesd.conf"
 SRC_URI +="file://location_hal_daemon_auto.conf"
+SRC_URI +="file://location_hal_daemon_iot.conf"
 
 FILES:${PN} += "${libdir}/*"
 FILES:${PN} += "/usr/include/*"
@@ -47,6 +52,13 @@ do_install:append () {
                   ${D}${sysconfdir}/systemd/system/location_hal_daemon.service.d/location_hal_daemon_auto.conf
         fi
 
+        if ${@bb.utils.contains('PACKAGECONFIG', 'loc-iot', 'true', 'false', d)}; then
+          ## Install conf file for targets where wpa supplicant is used
+          install -d ${D}${sysconfdir}/systemd/system/location_hal_daemon.service.d
+          install -m 0644 ${WORKDIR}/location_hal_daemon_iot.conf \
+                  ${D}${sysconfdir}/systemd/system/location_hal_daemon.service.d/location_hal_daemon_iot.conf
+        fi
+
         if ${@bb.utils.contains('PACKAGECONFIG', 'loc-bootkpi', 'true', 'false', d)}; then
             #Install service files to socket.targets only if dependent boot optmization changes are present.
             # Enable the service for sockets.target
@@ -58,6 +70,12 @@ do_install:append () {
             install -d ${D}${sysconfdir}/systemd/system/multi-user.target.wants/
             ln -sf /etc/systemd/system/location_hal_daemon.service \
                     ${D}/etc/systemd/system/multi-user.target.wants/location_hal_daemon.service
+        fi
+
+        # Modify SupplementaryGroups only if PACKAGECONFIG includes loc-sa535m
+        if ${@bb.utils.contains('PACKAGECONFIG', 'loc-sa535m', 'true', 'false', d)}; then
+            sed -i 's/SupplementaryGroups=diag inet radio logd/SupplementaryGroups=radio logd/' \
+                ${D}${sysconfdir}/systemd/system/location_hal_daemon.service
         fi
     else
         install -m 0755 ${S}/location_hal_initializer -D ${D}${sysconfdir}/init.d/location_hal_initializer
