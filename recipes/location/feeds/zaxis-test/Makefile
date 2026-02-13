@@ -8,7 +8,7 @@ PKG_FIXUP:=autoreconf
 
 LOCAL_SRC ?= $(TOPDIR)/src/qcom-opensource/location/zaxis-test
 
-include ../locationprop-common.mk
+include ../location-common.mk
 
 define Package/zaxis-test
   SECTION:=QTI
