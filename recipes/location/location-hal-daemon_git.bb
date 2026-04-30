@@ -74,7 +74,7 @@ do_install:append () {
 
         # Modify SupplementaryGroups only if PACKAGECONFIG includes loc-sa535m
         if ${@bb.utils.contains('PACKAGECONFIG', 'loc-sa535m', 'true', 'false', d)}; then
-            sed -i 's/SupplementaryGroups=diag inet radio logd/SupplementaryGroups=radio logd/' \
+            sed -i 's/SupplementaryGroups=diag radio logd/SupplementaryGroups=radio logd/' \
                 ${D}${sysconfdir}/systemd/system/location_hal_daemon.service
         fi
     else
