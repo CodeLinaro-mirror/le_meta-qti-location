@@ -33,6 +33,10 @@ DEPENDS += "location-client-api location-integration-api common-api-c++ \
 PACKAGECONFIG[loc-power] = "-DPOWER_DAEMON_MGR_ENABLED=ON,,powermanager-lib"
 RDEPENDS:${PN} = "open-avb"
 
+# Enable location DLT logging based on MACHINE_FEATURES
+PACKAGECONFIG:sa525m:append = "${@bb.utils.contains('MACHINE_FEATURES', 'dlt-logging', ' dlt_logging_enabled ', '', d)}"
+PACKAGECONFIG[dlt_logging_enabled] = "-DLOC_USE_DLT=ON,,dlt-daemon"
+
 FILES:${PN} += "${libdir}/*"
 FILES:${PN} += "/usr/include/*"
 FILES:${PN} += "/usr/bin/*"
