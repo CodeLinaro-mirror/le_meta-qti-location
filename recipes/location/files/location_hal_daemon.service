@@ -40,8 +40,8 @@ ExecStart=/usr/bin/location_hal_daemon
 ExecStop=
 # Start as user gps, which already has locclient group
 SupplementaryGroups=diag inet radio logd
-CapabilityBoundingSet=CAP_SETGID CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-AmbientCapabilities=CAP_SETGID CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+CapabilityBoundingSet=CAP_SETGID
+AmbientCapabilities=CAP_SETGID
 
 [Install]
 WantedBy=multi-user.target
