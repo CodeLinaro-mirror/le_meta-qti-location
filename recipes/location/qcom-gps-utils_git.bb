@@ -7,7 +7,7 @@ PR = "r1"
 
 FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://hardware/qcom/gps/utils/"
-S = "${WORKDIR}/hardware/qcom/gps/utils"
+S = "${UNPACKDIR}/hardware/qcom/gps/utils"
 
 ## Both VMs and EAPs will be treated in similar way
 PACKAGECONFIG[loc-vm] = "--with-external_ap"
@@ -27,7 +27,7 @@ do_install:append() {
         sed -i 's/DEBUG_LEVEL = 3/DEBUG_LEVEL = 1/' \
                 ${D}${sysconfdir}/gps.conf
         # Append target specific confs
-       gpsConfAppendFile='${WORKDIR}/confappend/auto/etc/gps.conf_append'
+       gpsConfAppendFile='${UNPACKDIR}/confappend/auto/etc/gps.conf_append'
        if [ -e ${gpsConfAppendFile} ]; then
            echo "Appending file: ${gpsConfAppendFile} to gps.conf"
            cat ${gpsConfAppendFile} >> ${D}${sysconfdir}/gps.conf
@@ -36,3 +36,5 @@ do_install:append() {
     ## Ownership to gps:gps for gps.conf
     chown gps:gps ${D}${sysconfdir}/gps.conf
 }
+
+PACKAGECONFIG:remove = "loc-automotive loc-sa535m"

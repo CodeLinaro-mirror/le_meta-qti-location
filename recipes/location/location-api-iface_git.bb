@@ -7,17 +7,14 @@ PR = "r1"
 
 FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://hardware/qcom/gps/location/"
-S = "${WORKDIR}/hardware/qcom/gps/location"
+S = "${UNPACKDIR}/hardware/qcom/gps/location"
 
 PACKAGES = "${PN}"
 FILES:${PN} += "/usr/*"
 FILES:${PN} += "/usr/include/*"
 
-do_configure() {
-}
-
-do_compile() {
-}
+do_configure[noexec] = "1"
+do_compile[noexec] = "1"
 
 do_install() {
     install -d ${D}${includedir}

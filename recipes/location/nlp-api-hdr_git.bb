@@ -9,13 +9,10 @@ ${LICENSE};md5=550794465ba0ec5312d6919e203a55f9"
 
 FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://qcom-opensource/location/nlp_api/inc/"
-S = "${WORKDIR}/qcom-opensource/location/nlp_api/inc"
+S = "${UNPACKDIR}/qcom-opensource/location/nlp_api/inc"
 
-do_configure() {
-}
-
-do_compile() {
-}
+do_configure[noexec] = "1"
+do_compile[noexec] = "1"
 
 do_install() {
     install -d ${D}${includedir}

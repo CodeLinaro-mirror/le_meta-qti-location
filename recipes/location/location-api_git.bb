@@ -7,7 +7,7 @@ PR = "r1"
 
 FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://hardware/qcom/gps/location/"
-S = "${WORKDIR}/hardware/qcom/gps/location"
+S = "${UNPACKDIR}/hardware/qcom/gps/location"
 
 DEPENDS = "qcom-gps-utils"
 
@@ -17,3 +17,5 @@ PACKAGECONFIG[loc-vm] = "--with-external_ap"
 SOLIBS = ".so*"
 FILES_SOLIBSDEV = ""
 INSANE_SKIP:${PN} = "dev-so"
+
+PACKAGECONFIG:remove = "loc-automotive loc-sa535m"

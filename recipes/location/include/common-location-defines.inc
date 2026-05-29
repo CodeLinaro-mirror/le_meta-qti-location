@@ -26,6 +26,13 @@ PACKAGECONFIG:sa535m = "loc-automotive loc-sa535m "
 PACKAGECONFIG:sdmsteppe = "loc-iot "
 
 ##Entries for VMs
+
+# No-op fallback definitions for PACKAGECONFIG options (Yocto 6.0 requires all set options to be defined)
+PACKAGECONFIG[loc-automotive] = ""
+PACKAGECONFIG[loc-sa535m] = ""
+PACKAGECONFIG[loc-bootkpi] = ""
+PACKAGECONFIG[loc-iot] = ""
+PACKAGECONFIG[loc-vm] = ""
 PACKAGECONFIG:append = "${@bb.utils.contains('MACHINE_FEATURES', 'qti-vm-guest', 'loc-vm', '', d)}"
 
 # enabling logcat for target which supports logd in both internal and external builds.

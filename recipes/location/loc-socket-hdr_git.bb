@@ -10,13 +10,10 @@ PR = "r1"
 
 FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://qcom-opensource/location/utils/loc_socket/"
-S = "${WORKDIR}/qcom-opensource/location/utils/loc_socket"
+S = "${UNPACKDIR}/qcom-opensource/location/utils/loc_socket"
 
-do_configure() {
-}
-
-do_compile() {
-}
+do_configure[noexec] = "1"
+do_compile[noexec] = "1"
 
 do_install() {
     install -d ${D}${includedir}

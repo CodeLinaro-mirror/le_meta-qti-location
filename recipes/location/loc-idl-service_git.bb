@@ -19,7 +19,7 @@ PACKAGE_ARCH    ?= "${MACHINE_ARCH}"
 FILESPATH =+ "${WORKSPACE}:"
 
 SRC_URI = "file://qcom-opensource/location/loc-fidl/"
-S = "${WORKDIR}/qcom-opensource/location/loc-fidl"
+S = "${UNPACKDIR}/qcom-opensource/location/loc-fidl"
 
 CPPFLAGS += " -DUSE_ANDROID_LOGGING "
 LDFLAGS += " -llog "

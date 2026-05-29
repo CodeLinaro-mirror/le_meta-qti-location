@@ -7,7 +7,7 @@ PR = "r1"
 
 FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://qcom-opensource/location/utils/base_util/"
-S = "${WORKDIR}/qcom-opensource/location/utils/base_util"
+S = "${UNPACKDIR}/qcom-opensource/location/utils/base_util"
 
 DEPENDS = "glib-2.0 openssl sqlite3 loc-pla-hdr qcom-gps-utils"
 
@@ -20,3 +20,5 @@ do_install:append() {
 SOLIBS = ".so*"
 FILES_SOLIBSDEV = ""
 INSANE_SKIP:${PN} = "dev-so"
+
+PACKAGECONFIG:remove = "loc-automotive loc-sa535m"

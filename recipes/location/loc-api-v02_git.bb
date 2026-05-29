@@ -7,7 +7,7 @@ PR = "r1"
 
 FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://qcom-opensource/location/loc_api/loc_api_v02/"
-S = "${WORKDIR}/qcom-opensource/location/loc_api/loc_api_v02"
+S = "${UNPACKDIR}/qcom-opensource/location/loc_api/loc_api_v02"
 
 DEPENDS = "loc-core qmi-framework"
 

@@ -7,7 +7,7 @@ PR = "r1"
 
 FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://hardware/qcom/gps/core/"
-S = "${WORKDIR}/hardware/qcom/gps/core"
+S = "${UNPACKDIR}/hardware/qcom/gps/core"
 
 PACKAGECONFIG[loc-automotive] = "--with-auto_feature"
 
@@ -18,6 +18,8 @@ DEPENDS = "qcom-gps-utils"
 
 PACKAGECONFIG:append:sa525m = " ptp"
 PACKAGECONFIG[ptp] = "--enable-ptp=yes, --enable-ptp=no, open-avb"
+
+PACKAGECONFIG:remove = "loc-sa535m"
 
 RDEPENDS_${PN} = "${@oe.utils.conditional('BASEMACHINE', 'sa525m', 'open-avb', '', d)}"
 

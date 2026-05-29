@@ -7,7 +7,7 @@ PR = "r1"
 
 FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://qcom-opensource/location/client_api_testapp/"
-S = "${WORKDIR}/qcom-opensource/location/client_api_testapp"
+S = "${UNPACKDIR}/qcom-opensource/location/client_api_testapp"
 
 DEPENDS = "location-client-api location-integration-api qcom-gps-utils"
 
