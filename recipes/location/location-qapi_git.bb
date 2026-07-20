@@ -7,7 +7,7 @@ PR = "r1"
 
 FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://qcom-opensource/location/qapi/"
-S = "${WORKDIR}/qcom-opensource/location/qapi"
+S = "${UNPACKDIR}/qcom-opensource/location/qapi"
 
 DEPENDS = "location-client-api"
 

@@ -11,7 +11,7 @@ PR = "r1"
 
 FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://qcom-opensource/location/location_hal_daemon/"
-S = "${WORKDIR}/qcom-opensource/location/location_hal_daemon"
+S = "${UNPACKDIR}/qcom-opensource/location/location_hal_daemon"
 
 DEPENDS = "loc-pla-hdr loc-hal qcom-gps-utils location-api-iface location-api location-api-msg-proto"
 RDEPENDS:${PN} = "loc-hal"
@@ -39,23 +39,23 @@ do_install:append () {
     if ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'true', 'false', d)}; then
         ## Install systemd-tmpfiles config file
         install -d ${D}${sysconfdir}/tmpfiles.d/
-        install -m 0644 ${WORKDIR}/location_hal_daemon-tmpfilesd.conf ${D}${sysconfdir}/tmpfiles.d/${BPN}.conf
+        install -m 0644 ${UNPACKDIR}/location_hal_daemon-tmpfilesd.conf ${D}${sysconfdir}/tmpfiles.d/${BPN}.conf
 
         ## Install systemd service unit file
         install -d ${D}${sysconfdir}/systemd/system/
-        install -m 0644 ${WORKDIR}/location_hal_daemon.service -D ${D}${sysconfdir}/systemd/system/location_hal_daemon.service
+        install -m 0644 ${UNPACKDIR}/location_hal_daemon.service -D ${D}${sysconfdir}/systemd/system/location_hal_daemon.service
 
         if ${@bb.utils.contains('PACKAGECONFIG', 'loc-automotive', 'true', 'false', d)}; then
           ## Install auto specific drop-in file
           install -d ${D}${sysconfdir}/systemd/system/location_hal_daemon.service.d
-          install -m 0644 ${WORKDIR}/location_hal_daemon_auto.conf \
+          install -m 0644 ${UNPACKDIR}/location_hal_daemon_auto.conf \
                   ${D}${sysconfdir}/systemd/system/location_hal_daemon.service.d/location_hal_daemon_auto.conf
         fi
 
         if ${@bb.utils.contains('PACKAGECONFIG', 'loc-iot', 'true', 'false', d)}; then
           ## Install conf file for targets where wpa supplicant is used
           install -d ${D}${sysconfdir}/systemd/system/location_hal_daemon.service.d
-          install -m 0644 ${WORKDIR}/location_hal_daemon_iot.conf \
+          install -m 0644 ${UNPACKDIR}/location_hal_daemon_iot.conf \
                   ${D}${sysconfdir}/systemd/system/location_hal_daemon.service.d/location_hal_daemon_iot.conf
         fi
 

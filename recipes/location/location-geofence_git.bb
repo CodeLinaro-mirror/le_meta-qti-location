@@ -6,7 +6,7 @@ DESCRIPTION = "GPS Geofence"
 
 FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://hardware/qcom/gps/geofence/"
-S = "${WORKDIR}/hardware/qcom/gps/geofence"
+S = "${UNPACKDIR}/hardware/qcom/gps/geofence"
 
 
 DEPENDS = "lbs-core"
@@ -27,4 +27,5 @@ SOLIBS = ".so*"
 FILES_SOLIBSDEV = ""
 
 # The geofence package contains symlinks that trip up insane
-INSANE_SKIP:${PN} = "dev-so"
+INSANE_SKIP:${PN} = "dev-so buildpaths"
+INSANE_SKIP:${PN}-dbg = "buildpaths"

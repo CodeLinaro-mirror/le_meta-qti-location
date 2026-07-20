@@ -6,14 +6,14 @@ DESCRIPTION = "location api msg protobuf library"
 
 FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://qcom-opensource/location/location_api_msg_proto/"
-S = "${WORKDIR}/qcom-opensource/location/location_api_msg_proto"
+S = "${UNPACKDIR}/qcom-opensource/location/location_api_msg_proto"
 
-DEPENDS = "glib-2.0 protobuf protobuf-native loc-pla-hdr qcom-gps-utils"
+DEPENDS = "glib-2.0 protobuf protobuf-native abseil-cpp loc-pla-hdr qcom-gps-utils"
 
 ## Both VMs and EAPs will be treated in similar way
 PACKAGECONFIG[loc-vm] = "--with-external_ap"
 
-PACKAGECONFIG:remove = "loc-automotive"
+PACKAGECONFIG:remove = "loc-automotive loc-sa535m"
 
 FILES:${PN} += "${libdir}/*"
 

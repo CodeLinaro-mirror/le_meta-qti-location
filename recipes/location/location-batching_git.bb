@@ -7,7 +7,7 @@ PR = "r1"
 
 FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://hardware/qcom/gps/batching/"
-S = "${WORKDIR}/hardware/qcom/gps/batching"
+S = "${UNPACKDIR}/hardware/qcom/gps/batching"
 
 DEPENDS = "liblog qcom-gps-utils loc-core"
 EXTRA_OECONF = "--with-core-includes=${WORKSPACE}/system/core/include \
