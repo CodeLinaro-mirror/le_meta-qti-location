@@ -21,16 +21,28 @@ PACKAGECONFIG:sa515m = "loc-automotive loc-bootkpi "
 PACKAGECONFIG:sa525m = "loc-automotive "
 
 LOC_ENABLE_DLT ?= "1"
-
 LOC_DLT_ENABLED = "${@ \
     'yes' if bb.utils.contains('MACHINE_FEATURES', 'dlt-logging', True, False, d) \
            and d.getVar('LOC_ENABLE_DLT') == '1' \
     else 'no' \
 }"
-CFLAGS:append = "${@ ' -DLOC_USE_DLT' if d.getVar('LOC_DLT_ENABLED') == 'yes' else ''}"
-CPPFLAGS:append = "${@ ' -DLOC_USE_DLT' if d.getVar('LOC_DLT_ENABLED') == 'yes' else ''}"
-DEPENDS:append = "${@ ' dlt-daemon' if d.getVar('LOC_DLT_ENABLED') == 'yes' else ''}"
-LDFLAGS:append = "${@ ' -ldlt' if d.getVar('LOC_DLT_ENABLED') == 'yes' else '' }"
+CFLAGS:append = "${@ ' -DLOC_USE_DLT ' if d.getVar('LOC_DLT_ENABLED') == 'yes' else ''}"
+CPPFLAGS:append = "${@ ' -DLOC_USE_DLT ' if d.getVar('LOC_DLT_ENABLED') == 'yes' else ''}"
+DEPENDS:append = "${@ ' dlt-daemon ' if d.getVar('LOC_DLT_ENABLED') == 'yes' else ''}"
+LDFLAGS:append = "${@ ' -ldlt ' if d.getVar('LOC_DLT_ENABLED') == 'yes' else '' }"
+
+LOC_ENABLE_CLOG ?= "1"
+
+LOC_CLOG_ENABLED = "${@ \
+    'yes' if bb.utils.contains('MACHINE_FEATURES', 'commonlog', True, False, d) \
+           and d.getVar('LOC_ENABLE_CLOG') == '1' \
+    else 'no' \
+}"
+CFLAGS:append = "${@ ' -DLOC_USE_CLOG ' if d.getVar('LOC_CLOG_ENABLED') == 'yes' else ''}"
+CPPFLAGS:append = "${@ ' -DLOC_USE_CLOG ' if d.getVar('LOC_CLOG_ENABLED') == 'yes' else ''}"
+DEPENDS:append = "${@ ' commonlog-lib' if d.getVar('LOC_CLOG_ENABLED') == 'yes' else ''}"
+LDFLAGS:append = "${@ ' -lclog ' if d.getVar('LOC_CLOG_ENABLED') == 'yes' else '' }"
+
 
 ##Entries for VMs
 PACKAGECONFIG:append = "${@bb.utils.contains('MACHINE_FEATURES', 'qti-vm-guest', 'loc-vm', '', d)}"

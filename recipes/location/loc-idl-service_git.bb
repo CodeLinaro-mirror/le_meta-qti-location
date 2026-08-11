@@ -37,6 +37,9 @@ RDEPENDS:${PN} = "open-avb"
 PACKAGECONFIG:sa525m:append = "${@bb.utils.contains('MACHINE_FEATURES', 'dlt-logging', ' dlt_logging_enabled ', '', d)}"
 PACKAGECONFIG[dlt_logging_enabled] = "-DLOC_USE_DLT=ON,,dlt-daemon"
 
+PACKAGECONFIG:sa525m:append = "${@bb.utils.contains('MACHINE_FEATURES', 'commonlog', ' clog_enabled ', '', d)}"
+PACKAGECONFIG[clog_enabled] = "-DLOC_USE_CLOG=ON,,commonlog-lib"
+
 FILES:${PN} += "${libdir}/*"
 FILES:${PN} += "/usr/include/*"
 FILES:${PN} += "/usr/bin/*"
