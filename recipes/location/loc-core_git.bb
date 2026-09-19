@@ -7,7 +7,7 @@ PR = "r1"
 
 FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://hardware/qcom/gps/core/"
-S = "${WORKDIR}/hardware/qcom/gps/core"
+S = "${UNPACKDIR}/hardware/qcom/gps/core"
 
 PACKAGECONFIG[loc-automotive] = "--with-auto_feature"
 

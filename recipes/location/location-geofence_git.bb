@@ -6,7 +6,7 @@ DESCRIPTION = "GPS Geofence"
 
 FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://hardware/qcom/gps/geofence/"
-S = "${WORKDIR}/hardware/qcom/gps/geofence"
+S = "${UNPACKDIR}/hardware/qcom/gps/geofence"
 
 
 DEPENDS = "lbs-core"

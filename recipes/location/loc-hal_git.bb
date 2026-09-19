@@ -7,7 +7,7 @@ PR = "r5"
 
 FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://hardware/qcom/gps/"
-S = "${WORKDIR}/hardware/qcom/gps"
+S = "${UNPACKDIR}/hardware/qcom/gps"
 
 PACKAGECONFIG[loc-automotive] = "--with-auto_feature"
 PACKAGECONFIG:append = "${@bb.utils.filter('DISTRO_FEATURES', 'qti-telux', d)}"

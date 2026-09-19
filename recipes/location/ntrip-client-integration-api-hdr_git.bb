@@ -9,7 +9,7 @@ PACKAGE_ARCH ?= "${MACHINE_ARCH}"
 
 FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://qcom-opensource/location/ntrip-client-integration-api/"
-S = "${WORKDIR}/qcom-opensource/location/ntrip-client-integration-api"
+S = "${UNPACKDIR}/qcom-opensource/location/ntrip-client-integration-api"
 FILES:${PN} += "/usr/*"
 PACKAGES = "${PN}"
 

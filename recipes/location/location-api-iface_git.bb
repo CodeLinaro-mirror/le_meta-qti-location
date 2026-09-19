@@ -7,7 +7,7 @@ PR = "r1"
 
 FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://hardware/qcom/gps/location/"
-S = "${WORKDIR}/hardware/qcom/gps/location"
+S = "${UNPACKDIR}/hardware/qcom/gps/location"
 
 PACKAGES = "${PN}"
 FILES:${PN} += "/usr/*"

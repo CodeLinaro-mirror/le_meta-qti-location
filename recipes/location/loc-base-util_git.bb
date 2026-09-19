@@ -7,7 +7,7 @@ PR = "r1"
 
 FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://qcom-opensource/location/utils/base_util/"
-S = "${WORKDIR}/qcom-opensource/location/utils/base_util"
+S = "${UNPACKDIR}/qcom-opensource/location/utils/base_util"
 
 DEPENDS = "glib-2.0 openssl sqlite3 loc-pla-hdr"
 

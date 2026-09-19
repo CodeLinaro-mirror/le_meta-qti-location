@@ -6,7 +6,7 @@ DESCRIPTION = "location api msg protobuf library"
 
 FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://qcom-opensource/location/location_api_msg_proto/"
-S = "${WORKDIR}/qcom-opensource/location/location_api_msg_proto"
+S = "${UNPACKDIR}/qcom-opensource/location/location_api_msg_proto"
 
 DEPENDS = "glib-2.0 protobuf protobuf-native loc-pla-hdr qcom-gps-utils"
 

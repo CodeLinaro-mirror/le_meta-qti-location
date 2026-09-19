@@ -7,7 +7,7 @@ PR = "r1"
 
 FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://hardware/qcom/gps/pla/oe/"
-S = "${WORKDIR}/hardware/qcom/gps/pla/oe"
+S = "${UNPACKDIR}/hardware/qcom/gps/pla/oe"
 
 DEPENDS += "libcutils liblog"
 

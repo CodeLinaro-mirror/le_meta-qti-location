@@ -11,7 +11,7 @@ PR = "r1"
 
 FILESPATH =+ "${WORKSPACE}:"
 SRC_URI = "file://qcom-opensource/location/location_hal_daemon/"
-S = "${WORKDIR}/qcom-opensource/location/location_hal_daemon"
+S = "${UNPACKDIR}/qcom-opensource/location/location_hal_daemon"
 
 DEPENDS = "loc-pla-hdr loc-hal qcom-gps-utils location-api-iface location-api location-api-msg-proto"
 RDEPENDS:${PN} = "loc-hal"
