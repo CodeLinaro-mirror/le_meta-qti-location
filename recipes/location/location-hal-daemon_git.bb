@@ -46,9 +46,11 @@ do_install:append () {
           install -m 0644 ${WORKDIR}/location_hal_daemon_auto.conf \
                   ${D}${sysconfdir}/systemd/system/location_hal_daemon.service.d/location_hal_daemon_auto.conf
 
-            ## Append 'dlt' group only when DLT logging is enabled
-            if ${@bb.utils.contains("MACHINE_FEATURES", "dlt-logging", "true", "false", d)} \
-                    && [ "${LOC_ENABLE_DLT}" = "1" ]; then
+            if { ${@bb.utils.contains("MACHINE_FEATURES", "dlt-logging", "true", "false", d)} \
+                    && [ "${LOC_ENABLE_DLT}" = "1" ]; } \
+               || \
+               { ${@bb.utils.contains("MACHINE_FEATURES", "commonlog", "true", "false", d)} \
+                    && [ "${LOC_ENABLE_CLOG}" = "1" ]; }; then
                 sed -i 's/^\(SupplementaryGroups=.*\)/\1 dlt/' \
                     ${D}${sysconfdir}/systemd/system/location_hal_daemon.service.d/location_hal_daemon_auto.conf
             fi
